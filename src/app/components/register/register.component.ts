@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.formRegister = this.fb.group({
       user_name: ['', [Validators.required,Validators.minLength(2), Validators.maxLength(100)]],
-      phone: ['', [Validators.required, Validators.pattern('/(0)+[0-9]{9}\\b/')]],
+      phone: ['', [Validators.required, Validators.pattern(/(0)+[0-9]{9}\\b/)]],
       role: ['',[Validators.required]],
       email: ['',[Validators.required, Validators.email]],
       password: ['', [Validators.required,Validators.minLength(6), Validators.maxLength(8)]],
@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
       this.messagePasswordConfirm = 'Bạn cần xác nhận mật khẩu';
     }
     this.authService.register(data).subscribe(response => {
-      this.router.navigate(['']).then(response => {
+      this.router.navigate(['/login']).then(response => {
         this.messageSuccess = 'Đăng ký thành công';
         console.log(this.messageSuccess);
       })
