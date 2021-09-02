@@ -1,0 +1,101 @@
+<div class="main">
+  <section class="signup">
+    <div class="container">
+      <div class="signup-content">
+        <div class="signup-form">
+          <h2 class="form-title">Sign up</h2>
+          <form *ngIf="formRegister" [formGroup]="formRegister" (ngSubmit)="submit()" class="register-form" id="register-form">
+            <div class="form-group">
+              <label for="user_name"><i class="fas fa-user-alt"></i></label>
+              <input type="text" name="user_name" id="user_name" placeholder="Nhập tên người dùng" formControlName="user_name"/>
+            </div>
+            <div *ngIf="user_name?.invalid && (user_name?.dirty || user_name?.touched) ">
+              <p *ngIf="user_name?.errors?.required" class="text-danger">
+                {{messageUser}}
+              </p>
+              <p *ngIf="user_name?.errors?.minlength" class="text-danger">
+                Tên người dùng ít nhất 2 ký tự
+              </p>
+              <p *ngIf="user_name?.errors?.maxlength" class="text-danger">
+                Tên người dùng tối đa 100 ký tự
+              </p>
+            </div>
+            <div class="form-group">
+              <label for="phone"><i class="fas fa-phone-square-alt"></i></label>
+              <input type="text" name="phone" id="phone" placeholder="Nhập số điện thoại" formControlName="phone"/>
+            </div>
+            <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched) ">
+              <p *ngIf="phone?.errors?.required" class="text-danger">
+                {{messagePhone}}
+              </p>
+              <p *ngIf="phone?.errors?.pattern" class="text-danger">
+                Số điện thoại có dạng: 0xxxxxxxxx
+              </p>
+            </div>
+            <div class="form-group">
+              Bạn muốn đăng ký với vai trò:
+              <select class="form-select" aria-label="Default select example" formControlName="role">
+                <option value="user">Người dùng</option>
+                <option value="manager">Chủ nhà</option>
+              </select>
+            </div>
+            <div *ngIf="role?.invalid && (role?.dirty || role?.touched) ">
+              <p *ngIf="role?.errors?.required" class="text-danger">
+                {{messageRole}}
+              </p>
+            </div>
+            <div class="form-group">
+              <label for="email"><i class="fas fa-envelope"></i></label>
+              <input type="email" name="email" id="email" placeholder="Nhập email" formControlName="email"/>
+            </div>
+            <div *ngIf="email?.invalid && (email?.dirty || email?.touched) ">
+              <p *ngIf="email?.errors?.required" class="text-danger">
+                {{messageEmail}}
+              </p>
+              <p *ngIf="email?.errors?.required" class="text-danger">
+                Email sai định dạng
+              </p>
+            </div>
+            <div class="form-group">
+              <label for="password"><i class="fas fa-lock"></i></label>
+              <input type="password" name="password" id="password" placeholder="Nhập mật khẩu" formControlName="password"/>
+            </div>
+            <div *ngIf="password?.invalid && (password?.dirty || password?.touched) ">
+              <p *ngIf="password?.errors?.required" class="text-danger">
+                {{messagePassword}}
+              </p>
+              <p *ngIf="password?.errors?.minlength" class="text-danger">
+                Mật khẩu tối thiểu 6 ký tự
+              </p>
+              <p *ngIf="password?.errors?.maxlength" class="text-danger">
+                Mật khẩu tối đa 8 ký tự
+              </p>
+            </div>
+            <div class="form-group">
+              <label for="password_confirmation"><i class="fas fa-lock"></i></label>
+              <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Xác nhận mật khẩu" formControlName="password_confirmation"/>
+            </div>
+            <div *ngIf="password_confirmation?.invalid && (password_confirmation?.dirty || password_confirmation?.touched) ">
+              <p *ngIf="password_confirmation?.errors?.required" class="text-danger">
+                {{messagePasswordConfirm}}
+              </p>
+              <p *ngIf="password_confirmation?.errors?.minlength" class="text-danger">
+                Mật khẩu tối thiểu 6 ký tự
+              </p>
+              <p *ngIf="password_confirmation?.errors?.maxlength" class="text-danger">
+                Mật khẩu tối đa 8 ký tự
+              </p>
+            </div>
+            <div class="form-group form-button">
+              <button class="form-submit">Sign up</button>
+            </div>
+          </form>
+        </div>
+        <div class="signup-image">
+          <figure><img src="/assets/images/signup-image.jpg" alt="sing up image"></figure>
+          <p class="signup-image-link">I am already member</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
