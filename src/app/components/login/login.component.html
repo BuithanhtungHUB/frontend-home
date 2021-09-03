@@ -3,8 +3,8 @@
     <div class="container">
       <div class="signin-content">
         <div class="signin-image">
-          <figure><img src="/assets/images/signin-image.jpg" alt="sing up image"></figure>
-          <h3 class="signup-image-link">Create an account</h3>
+          <figure><img src="/assets/sign/images/signin-image.jpg" alt="sing up image"></figure>
+          <a class="signup-image-link" routerLink="/register">Create an account</a>
         </div>
 
         <div class="signin-form">
@@ -12,36 +12,24 @@
           <form *ngIf="formLogin" [formGroup]="formLogin" (ngSubmit)="submit()" class="register-form" id="login-form">
             <div class="form-group">
               <label for="user_name"><i class="fas fa-user-alt"></i></label>
-              <input type="text" name="your_name" id="user_name" placeholder="User Name" formControlName="user_name"
-                     [ngClass]="(user_name?.invalid && (user_name?.dirty || user_name?.touched)) ? 'is-invalid' : '' "/>
+              <input type="text" name="your_name" id="user_name" placeholder="User Name" formControlName="user_name"/>
             </div>
-<!--            <p *ngIf="messageUser" class="text-danger">{{messageUser}}</p>-->
-            <div *ngIf="user_name?.invalid && (user_name?.dirty || user_name?.touched) ">
-              <p *ngIf="user_name?.errors?.required" class="text-danger">
-                {{messageUser}}
-              </p>
-            </div>
+
             <div class="form-group">
               <label for="your_pass"><i class="fas fa-lock"></i></label>
-              <input type="password" name="your_pass" id="your_pass" placeholder="Password" formControlName="password"
-                     [ngClass]="(password?.invalid && (password?.dirty || password?.touched)) ? 'is-invalid' : '' "/>
+              <input type="password" name="your_pass" id="your_pass" placeholder="Password" formControlName="password"/>
             </div>
-            <div *ngIf="password?.invalid && (password?.dirty || password?.touched) ">
-              <p *ngIf="password?.errors?.required" class="text-danger">
-                {{messagePassword}}
-              </p>
-              <p *ngIf="password?.errors?.minlength" class="text-danger">
-                Password có ít nhất 6 kí tự
-              </p>
-              <p *ngIf="password?.errors?.maxlength" class="text-danger">
-                Password tối đa 8 kí tự
-              </p>
-            </div>
+
 
             <div class="form-group form-button">
               <button class="form-submit">Sign in</button>
             </div>
-            <p *ngIf="messageError" class="text-danger">{{messageError}}</p>
+            <div>
+              <p *ngIf="messageUser" class="text-danger">Tên người dùng không được để trống</p>
+              <p *ngIf="messagePassword" class="text-danger">Mật khẩu không được để trống</p>
+              <p *ngIf="messageError" class="text-danger">Không được phép truy cập. <br> Vui lòng kiểm tra lại tên người dùng và mật khẩu!</p>
+<!--              <p *ngIf="messageError" class="text-danger">Mật khẩu hoặc tên người dùng không chính xác</p>-->
+            </div>
           </form>
           <div class="social-login">
             <span class="social-label">Or login with</span>

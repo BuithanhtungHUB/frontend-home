@@ -30,12 +30,12 @@ export class LoginComponent implements OnInit {
 
   submit(){
     let data = this.formLogin?.value;
-    if(!data.user_name) {
-      this.messageUser = 'Tên người dùng không được để trống';
-    }
-    if(!data.password) {
-      this.messagePassword = 'Mật khẩu không được để trống';
-    }
+    // if(!data.user_name) {
+    //   this.messageUser = 'Tên người dùng không được để trống';
+    // }
+    // if(!data.password) {
+    //   this.messagePassword = 'Mật khẩu không được để trống';
+    // }
     this.authService.login(data).subscribe(respone => {
       localStorage.setItem('token', JSON.stringify(respone.access_token));
       localStorage.setItem('userLogin', JSON.stringify(respone.user));
@@ -45,8 +45,10 @@ export class LoginComponent implements OnInit {
         }
       )
     }, errors => {
-      this.messageError = JSON.stringify(errors.error.error)
-      console.log(this.messageUser, this.messagePassword);
+      this.messageUser = JSON.stringify(errors.error.user_name);
+      this.messagePassword = JSON.stringify(errors.error.password);
+      this.messageError = JSON.stringify(errors.error.error);
+      console.log(this.messageUser, this.messagePassword, this.messageError);
     })
   }
 
