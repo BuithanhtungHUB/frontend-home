@@ -9,6 +9,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
+import { SafePipe } from './safe.pipe';
 
 @NgModule({
   declarations: [

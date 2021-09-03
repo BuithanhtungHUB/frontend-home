@@ -6,7 +6,6 @@ import {AuthService} from "../../../services/auth.service";
 import {Observable} from "rxjs";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs/operators";
-import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-update-profile',
@@ -42,7 +41,6 @@ export class UpdateProfileComponent implements OnInit {
       });
   }
   formUpdateProfile: FormGroup | undefined;
-  safeUrl: SafeUrl | undefined;
   fullNameStr: string | undefined;
   emailStr: string | undefined;
 
@@ -50,8 +48,7 @@ export class UpdateProfileComponent implements OnInit {
               private userService: UserService,
               private router: Router,
               private authService: AuthService,
-              private storage: AngularFireStorage,
-              private sanitizer: DomSanitizer) { }
+              private storage: AngularFireStorage) { }
 
   ngOnInit(): void {
     this.authService.getUserProfile().subscribe( res => {
@@ -63,25 +60,28 @@ export class UpdateProfileComponent implements OnInit {
         phoneNumber: [res.phone, [Validators.required, Validators.pattern('(0)+[0-9]{9}\\b')]],
         email: [res.email, [Validators.required, Validators.email]],
       })
-    }, error => {
+    }, // data test
+        error => {
     })
     this.formUpdateProfile = this.fb.group({
-      avatar: [''],
-      username: ['', [Validators.required]],
-      fullName: ['', [Validators.required]],
-      address: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required, Validators.pattern('(0)+[0-9]{9}\\b')]],
-      email: ['', [Validators.required, Validators.email]],
+      avatar: ['https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/440px-User_icon_2.svg.png'],
+      username: ['kien', [Validators.required]],
+      fullName: ['Đỗ Trung Kiên', [Validators.required]],
+      address: ['VP', [Validators.required]],
+      phoneNumber: ['0945343658', [Validators.required, Validators.pattern('(0)+[0-9]{9}\\b')]],
+      email: ['kien@gmail.com', [Validators.required, Validators.email]],
     })
 
-    this.safeUrl = this.sanitizer.bypassSecurityTrustUrl('https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/440px-User_icon_2.svg.png');
-    this.fullNameStr = 'Đỗ Trung Kiên';
-    this.emailStr = 'kien@gmail.com'
-    console.log(this.safeUrl);
+    this.fullNameStr = this.formUpdateProfile.value.fullName;
+    this.emailStr = this.formUpdateProfile.value.email;
+    this.imgUrl = this.formUpdateProfile.value.avatar;
   }
 
   submit() {
+    // @ts-ignore
+    this.formUpdateProfile?.value.avatar = this.imgUrl;
     let data = this.formUpdateProfile?.value;
+    console.log(data);
     this.userService.updateProfile(data).subscribe(res => {
       this.router.navigate(['']).then(
         () => {

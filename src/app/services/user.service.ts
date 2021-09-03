@@ -12,6 +12,6 @@ export class UserService {
 
   //thieu token
   updateProfile(data: any):Observable<any> {
-    return this.http.post(environment.url_api + "update-profile", data);
+    return this.http.post(environment.url_api + "update-user-profile", data);
   }
 }
