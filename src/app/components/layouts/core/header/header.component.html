@@ -65,10 +65,19 @@
                 <li class="active"><a routerLink="/">Trang chủ</a></li>
                 <li><a href="./blog.html">Tin tức</a></li>
                 <li><a routerLink="/manager">Chủ nhà</a></li>
+              </ul>
+              <ul  *ngIf="user">
+                <li><a routerLink="/detail">{{user.user_name}}</a></li>
+                <li><button (click)="logout()">Đăng xuất</button></li>
+
+              </ul>
+              <ul  *ngIf="!user">
                 <li><a routerLink="/register">Đăng ký</a></li>
                 <li><a routerLink="/login">Đăng nhập</a></li>
               </ul>
-
+<!--              <div class="book-now-btn ml-3 ml-lg-5">-->
+<!--                <button (click)="logout()">Đăng xuất</button>-->
+<!--              </div>-->
               <!-- Book Now -->
 <!--              <div class="book-now-btn ml-3 ml-lg-5">-->
 <!--                <a routerLink="/login">Đăng ký</a>-->

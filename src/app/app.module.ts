@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { MasterComponent } from './components/layouts/master/master.component';
 import { HeaderComponent } from './components/layouts/core/header/header.component';
 import { FooterComponent } from './components/layouts/core/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { HttpClientModule} from "@angular/common/http";
+import {ReactiveFormsModule} from "@angular/forms";
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -13,10 +17,14 @@ import { FooterComponent } from './components/layouts/core/footer/footer.compone
     MasterComponent,
     HeaderComponent,
     FooterComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,42 @@
+<div class="main">
+  <section class="sign-in">
+    <div class="container">
+      <div class="signin-content">
+        <div class="signin-image">
+          <figure><img src="/assets/sign/images/signin-image.jpg" alt="sing up image"></figure>
+          <a class="signup-image-link" routerLink="/register">Create an account</a>
+        </div>
+
+        <div class="signin-form">
+          <h2 class="form-title">Sign in</h2>
+          <form *ngIf="formLogin" [formGroup]="formLogin" (ngSubmit)="submit()" class="register-form" id="login-form">
+            <div class="form-group">
+              <label for="user_name"><i class="fas fa-user-alt"></i></label>
+              <input type="text" name="your_name" id="user_name" placeholder="User Name" formControlName="user_name"/>
+            </div>
+
+            <div class="form-group">
+              <label for="your_pass"><i class="fas fa-lock"></i></label>
+              <input type="password" name="your_pass" id="your_pass" placeholder="Password" formControlName="password"/>
+            </div>
+
+
+            <div class="form-group form-button">
+              <button class="form-submit">Sign in</button>
+            </div>
+            <div>
+              <p *ngIf="messageUser" class="text-danger">Tên người dùng không được để trống</p>
+              <p *ngIf="messagePassword" class="text-danger">Mật khẩu không được để trống</p>
+              <!--              <p *ngIf="messageError" class="text-danger">Không được phép truy cập. <br> Vui lòng kiểm tra lại tên người dùng và mật khẩu!</p>-->
+              <p *ngIf="messageError" class="text-danger">Mật khẩu hoặc tên người dùng không chính xác</p>
+            </div>
+          </form>
+          <div class="social-login">
+            <span class="social-label">Or login with</span>
+            <a href="#"><i class="fab fa-google"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

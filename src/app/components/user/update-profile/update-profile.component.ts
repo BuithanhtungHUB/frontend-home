@@ -51,30 +51,17 @@ export class UpdateProfileComponent implements OnInit {
               private storage: AngularFireStorage) { }
 
   ngOnInit(): void {
-    this.authService.getUserProfile().subscribe( res => {
-      this.formUpdateProfile = this.fb.group({
-        avatar: [res.avatar],
-        username: [res.user_name, [Validators.required]],
-        fullName: [res.full_name, [Validators.required]],
-        address: [res.address, [Validators.required]],
-        phoneNumber: [res.phone, [Validators.required, Validators.pattern('(0)+[0-9]{9}\\b')]],
-        email: [res.email, [Validators.required, Validators.email]],
-      })
-    },
-        error => {
-    })
-    // data test
+    let userLogin = JSON.parse(<string>this.authService.getUser());
+    console.log(userLogin);
     this.formUpdateProfile = this.fb.group({
-      avatar: ['https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/440px-User_icon_2.svg.png'],
-      username: ['kien', [Validators.required]],
-      fullName: ['Đỗ Trung Kiên', [Validators.required]],
-      address: ['VP', [Validators.required]],
-      phoneNumber: ['0945343658', [Validators.required, Validators.pattern('(0)+[0-9]{9}\\b')]],
-      email: ['kien@gmail.com', [Validators.required, Validators.email]],
+      avatar: [userLogin.avatar],
+      user_name: [userLogin.user_name],
+      full_name: [userLogin.full_name, [Validators.required]],
+      address: [userLogin.address, [Validators.required]],
+      phone: [userLogin.phone, [Validators.required, Validators.pattern(/(0)+[0-9]{9}\b/)]],
+      email: [userLogin.email],
     })
 
-    this.fullNameStr = this.formUpdateProfile.value.fullName;
-    this.emailStr = this.formUpdateProfile.value.email;
     this.imgUrl = this.formUpdateProfile.value.avatar;
   }
 
@@ -82,23 +69,19 @@ export class UpdateProfileComponent implements OnInit {
     // @ts-ignore
     this.formUpdateProfile?.value.avatar = this.imgUrl;
     let data = this.formUpdateProfile?.value;
-    console.log(data);
+    localStorage.setItem('userLogin', JSON.stringify(data));
     this.userService.updateProfile(data).subscribe(res => {
-      this.router.navigate(['']).then(
-        () => {
-          console.log('Cập nhật thành công');
-        }
-      );
+      this.router.navigate(['']).then();
       alert('Cập nhật thành công');
-    })
+    });
   }
 
   get username() {
-    return this.formUpdateProfile?.get('username');
+    return this.formUpdateProfile?.get('user_name');
   }
 
   get fullName() {
-    return this.formUpdateProfile?.get('fullName');
+    return this.formUpdateProfile?.get('full_name');
   }
 
   get address() {
@@ -106,7 +89,7 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   get phoneNumber() {
-    return this.formUpdateProfile?.get('phoneNumber');
+    return this.formUpdateProfile?.get('phone');
   }
 
   get email() {
