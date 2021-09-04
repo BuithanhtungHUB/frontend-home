@@ -9,10 +9,22 @@
               <label for="user_name"><i class="fas fa-user-alt"></i></label>
               <input type="text" name="user_name" id="user_name" placeholder="Nhập tên người dùng" formControlName="user_name"/>
             </div>
-
+            <div *ngIf="user_name?.invalid && (user_name?.dirty || user_name?.touched || messageError) ">
+              <p *ngIf="user_name?.errors?.required" class="text-danger">
+                Tên người dùng không được để trống
+              </p>
+            </div>
             <div class="form-group">
               <label for="phone"><i class="fas fa-phone-square-alt"></i></label>
               <input type="text" name="phone" id="phone" placeholder="Nhập số điện thoại" formControlName="phone"/>
+            </div>
+            <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched || messageError) ">
+              <p *ngIf="phone?.errors?.required" class="text-danger">
+                Số điện thoại dùng không được để trống
+              </p>
+              <p *ngIf="phone?.errors?.pattern" class="text-danger">
+                Số điện thoại không đúng định dạng
+              </p>
             </div>
             <div class="form-group">
               Bạn muốn đăng ký với vai trò:
@@ -20,24 +32,46 @@
                 <option value="user">Người dùng</option>
                 <option value="manager">Chủ nhà</option>
               </select>
+              <div *ngIf="role?.invalid && (role?.dirty || role?.touched || messageRole) ">
+              <p *ngIf="role?.errors?.required" class="text-danger">
+                Bạn cần chọn vai trò của mình
+              </p>
+              </div>
             </div>
             <div class="form-group">
               <label for="email"><i class="fas fa-envelope"></i></label>
               <input type="email" name="email" id="email" placeholder="Nhập email" formControlName="email"/>
             </div>
+            <div *ngIf="email?.invalid && (email?.dirty || email?.touched || messageError) ">
+              <p *ngIf="email?.errors?.required" class="text-danger">
+                Email không được để trống
+              </p>
+              <p *ngIf="email?.errors?.email" class="text-danger">
+                Email không đúng định dạng
+              </p>
+            </div>
             <div class="form-group">
               <label for="password"><i class="fas fa-lock"></i></label>
               <input type="password" name="password" id="password" placeholder="Nhập mật khẩu" formControlName="password"/>
             </div>
+            <div *ngIf="password?.invalid && (password?.dirty || password?.touched || messageError) ">
+              <p *ngIf="password?.errors?.required" class="text-danger">
+                Mật khẩu không được để trống
+              </p>
+              <p *ngIf="password?.errors?.minlength" class="text-danger">
+                Mật khẩu ít nhất 6 ký tự
+              </p>
+              <p *ngIf="password?.errors?.maxlength" class="text-danger">
+                Mật khẩu tối đa 8 ký tự
+              </p>
+            </div>
             <div class="form-group">
               <label for="password_confirmation"><i class="fas fa-lock"></i></label>
-              <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Xác nhận mật khẩu" formControlName="password_confirmaiton" />
+              <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Xác nhận mật khẩu" formControlName="password_confirmation" />
             </div>
-
             <div class="form-group form-button">
               <button class="form-submit">Sign up</button>
             </div>
-            <p *ngIf="messageError" class="text-danger">Các trường không được để trống</p>
             <p *ngIf="messagePasswordConfirm" class="text-danger">Mật khẩu xác nhận không khớp</p>
           </form>
         </div>
