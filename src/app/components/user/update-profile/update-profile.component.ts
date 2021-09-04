@@ -66,14 +66,16 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   submit() {
-    // @ts-ignore
-    this.formUpdateProfile?.value.avatar = this.imgUrl;
-    let data = this.formUpdateProfile?.value;
-    localStorage.setItem('userLogin', JSON.stringify(data));
-    this.userService.updateProfile(data).subscribe(res => {
-      this.router.navigate(['']).then();
-      alert('Cập nhật thành công');
-    });
+    if (confirm('Bạn đã chắc chắn với thay đổi của mình?')) {
+      // @ts-ignore
+      this.formUpdateProfile?.value.avatar = this.imgUrl;
+      let data = this.formUpdateProfile?.value;
+      localStorage.setItem('userLogin', JSON.stringify(data));
+      this.userService.updateProfile(data).subscribe(res => {
+        this.router.navigate(['']).then();
+        alert('Cập nhật thành công');
+      });
+    }
   }
 
   get username() {

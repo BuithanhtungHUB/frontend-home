@@ -1,18 +1,6 @@
 <form *ngIf="formUpdateProfile" [formGroup]="formUpdateProfile" (ngSubmit)="submit()">
   <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
-      <div class="col-md-3 border-right">
-        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img width="150px" [src]="imgUrl"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
-        <div class="form-group col-12">
-          <input type="file"
-                 id="file"
-                 #userPhoto
-                 (change)="onFileSelected(userPhoto.files)"
-                 name="image"
-                 autocomplete="off"
-          />
-        </div>
-      </div>
       <div class="col-md-5 border-right">
         <div class="p-3 py-5">
           <div class="d-flex justify-content-between align-items-center mb-3">
@@ -58,6 +46,18 @@
             </div>
           </div>
           <div class="mt-5 text-center"><button class="btn btn-primary profile-button">Lưu thông tin</button></div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img width="150px" [src]="imgUrl"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
+        <div class="form-group col-12">
+          <input type="file"
+                 id="file"
+                 #userPhoto
+                 (change)="onFileSelected(userPhoto.files)"
+                 name="image"
+                 autocomplete="off"
+          />
         </div>
       </div>
     </div>
