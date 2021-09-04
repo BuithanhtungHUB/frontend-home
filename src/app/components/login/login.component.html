@@ -27,8 +27,8 @@
             <div>
               <p *ngIf="messageUser" class="text-danger">Tên người dùng không được để trống</p>
               <p *ngIf="messagePassword" class="text-danger">Mật khẩu không được để trống</p>
-<!--              <p *ngIf="messageError" class="text-danger">Không được phép truy cập. <br> Vui lòng kiểm tra lại tên người dùng và mật khẩu!</p>-->
-                            <p *ngIf="messageError" class="text-danger">Mật khẩu hoặc tên người dùng không chính xác</p>
+              <!--              <p *ngIf="messageError" class="text-danger">Không được phép truy cập. <br> Vui lòng kiểm tra lại tên người dùng và mật khẩu!</p>-->
+              <p *ngIf="messageError" class="text-danger">Mật khẩu hoặc tên người dùng không chính xác</p>
             </div>
           </form>
           <div class="social-login">

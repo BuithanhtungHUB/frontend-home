@@ -9,6 +9,7 @@ import { FooterComponent } from './components/layouts/core/footer/footer.compone
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     HeaderComponent,
     FooterComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

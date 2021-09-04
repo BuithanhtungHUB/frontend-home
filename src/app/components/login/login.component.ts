@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     let data = this.formLogin?.value;
     this.authService.login(data).subscribe(respone => {
       localStorage.setItem('token', JSON.stringify(respone.access_token));
-      localStorage.setItem('userLoign', JSON.stringify(respone.user));
+      localStorage.setItem('userLogin', JSON.stringify(respone.user));
       this.router.navigate(['']).then(respone => {
         this.messageSuccess = 'Đăng nhập thành công';
       })
