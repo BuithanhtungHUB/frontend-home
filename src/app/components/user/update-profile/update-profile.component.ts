@@ -60,9 +60,10 @@ export class UpdateProfileComponent implements OnInit {
         phoneNumber: [res.phone, [Validators.required, Validators.pattern('(0)+[0-9]{9}\\b')]],
         email: [res.email, [Validators.required, Validators.email]],
       })
-    }, // data test
+    },
         error => {
     })
+    // data test
     this.formUpdateProfile = this.fb.group({
       avatar: ['https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/440px-User_icon_2.svg.png'],
       username: ['kien', [Validators.required]],
