@@ -17,16 +17,16 @@ const routes: Routes = [
       path: 'manager',
       loadChildren: () => import('./components/manager/manager.module').then(m => m.ManagerModule)
     },
+    {
+      path: 'login',
+      component: LoginComponent
+    },
+    {
+      path: 'register',
+      component: RegisterComponent
+    }
   ]
-},
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
-  }];
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

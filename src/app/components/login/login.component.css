@@ -186,7 +186,8 @@ h2 {
   font-size: 36px; }
 
 .main {
-  background: #f8f8f8;
+  /*background: #f8f8f8;*/
+  background-color: #1abc9c;
   padding: 150px 0; }
 
 .clear {
@@ -290,7 +291,7 @@ figure {
   background: #4292dc; }
 
 #signin {
-  margin-top: 16px; }
+  margin-top: 16px;}
 
 .signup-image-link {
   font-size: 14px;
@@ -452,7 +453,7 @@ label.valid:after {
 
 .signin-content {
   padding-top: 67px;
-  padding-bottom: 87px; }
+  padding-bottom: 87px;}
 
 .social-login {
   align-items: center;
