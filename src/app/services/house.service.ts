@@ -17,6 +17,7 @@ export class HouseService {
     return new HttpHeaders().set("Authorization", "Bearer " + token);
   }
 
+
   getHouseList(): Observable<any> {
     return this.http.get(environment.url_api+ 'get-all');
   }
