@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , OnChanges} from '@angular/core';
 import {AuthService} from "../../../../services/auth.service";
 import {Router} from "@angular/router";
 
@@ -16,14 +16,16 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(<string>this.authService.getUser());
-    console.log(this.user)
+    console.log(this.user);
   }
+
 
 
   logout() {
     this.authService.logout().subscribe(res => {
       localStorage.clear();
-      this.router.navigate(['']).then(r => {
+      this.router.navigate(['/']).then(r => {
+        location.reload();
         console.log('logout success')
       }).catch(error => {
         console.log('logout error')

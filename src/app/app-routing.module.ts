@@ -20,17 +20,17 @@ const routes: Routes = [
     {
       path: 'user',
       loadChildren: () => import('./components/user/user.module').then(m => m.UserModule)
+    },
+    {
+      path: 'login',
+      component: LoginComponent
+    },
+    {
+      path: 'register',
+      component: RegisterComponent
     }
   ]
-},
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
-  }];
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
