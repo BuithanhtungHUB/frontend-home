@@ -186,7 +186,8 @@ h2 {
   font-size: 36px; }
 
 .main {
-  background: #f8f8f8;
+  /*background: #f8f8f8;*/
+  background-color: #1abc9c;
   padding: 150px 0; }
 
 .clear {
