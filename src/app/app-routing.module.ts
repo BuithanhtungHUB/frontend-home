@@ -18,16 +18,16 @@ const routes: Routes = [
       loadChildren: () => import('./components/manager/manager.module').then(m => m.ManagerModule)
     },
     {
+      path: 'user',
+      loadChildren: () => import('./components/user/user.module').then(m => m.UserModule)
+    },
+    {
       path: 'login',
       component: LoginComponent
     },
     {
       path: 'register',
       component: RegisterComponent
-    },
-    {
-      path: 'user',
-      loadChildren: () => import('./components/user/user.module').then(m => m.UserModule)
     }
   ]
 }];
