@@ -20,10 +20,12 @@ export class HeaderComponent implements OnInit {
   }
 
 
+
   logout() {
     this.authService.logout().subscribe(res => {
       localStorage.clear();
-      this.router.navigate(['']).then(r => {
+      this.router.navigate(['/']).then(r => {
+        location.reload();
         console.log('logout success')
       }).catch(error => {
         console.log('logout error')
