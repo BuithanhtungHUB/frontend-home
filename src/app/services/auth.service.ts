@@ -21,7 +21,6 @@ export class AuthService {
 
   getUser() {
     return localStorage.getItem('userLogin');
-    // return  this.http.get(environment.url_api + 'auth/user-profile',{headers: this.setHeader()});
   }
 
   logout() : Observable<any>{

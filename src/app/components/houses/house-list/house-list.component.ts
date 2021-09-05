@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HouseService} from "../../../services/house.service";
 
 @Component({
   selector: 'app-house-list',
@@ -6,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./house-list.component.css']
 })
 export class HouseListComponent implements OnInit {
-
-  constructor() {
-  }
+  houses: any;
+  constructor(private houseService: HouseService) { }
 
   ngOnInit(): void {
+    this.houseService.getHouseList().subscribe(res => {
+      this.houses = res;
+      console.log(this.houses);
+    })
   }
 
 }

@@ -1,0 +1,65 @@
+<form *ngIf="formUpdateProfile" [formGroup]="formUpdateProfile" (ngSubmit)="submit()">
+  <div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+      <div class="col-md-5 border-right">
+        <div class="p-3 py-5">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Cập nhật thông tin</h4>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-12"><label class="labels text-danger">Username (Không được phép thay đổi)</label>
+              <input readonly type="text" class="form-control" formControlName="user_name">
+            </div>
+            <div class="col-md-12"><label class="labels">Họ và tên</label>
+              <input type="text" class="form-control" placeholder="Họ và tên" formControlName="full_name" [ngClass]="(fullName?.invalid && (fullName?.dirty || fullName?.touched)) ? 'is-invalid' : ''">
+            </div>
+            <div *ngIf="fullName?.invalid && (fullName?.dirty || fullName?.touched)">
+              <p *ngIf="fullName?.errors?.required" class="text-danger">
+                Không được để trống họ và tên
+              </p>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12"><label class="labels">Địa chỉ</label>
+              <input type="text" class="form-control" placeholder="Địa chỉ" formControlName="address" [ngClass]="(address?.invalid && (address?.dirty || address?.touched)) ? 'is-invalid' : ''">
+            </div>
+            <div *ngIf="address?.invalid && (address?.dirty || address?.touched)">
+              <p *ngIf="address?.errors?.required" class="text-danger">
+                Không được để trống địa chỉ
+              </p>
+            </div>
+            <div class="col-md-12"><label class="labels">SĐT</label>
+              <input type="text" class="form-control" placeholder="SĐT" formControlName="phone" [ngClass]="(phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)) ? 'is-invalid' : ''">
+            </div>
+            <div *ngIf="phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)">
+              <p *ngIf="phoneNumber?.errors?.required" class="text-danger">
+                Không được để trống số điện thoại
+              </p>
+            </div>
+            <div *ngIf="phoneNumber?.invalid && phoneNumber?.touched">
+              <p *ngIf="phoneNumber?.errors?.pattern" class="text-danger">
+                Không đúng chuẩn
+              </p>
+            </div>
+            <div class="col-md-12"><label class="labels text-danger">Email (Không được phép thay đổi email)</label>
+              <input readonly type="email" class="form-control" placeholder="Email" value=""formControlName="email">
+            </div>
+          </div>
+          <div class="mt-5 text-center"><button class="btn btn-primary profile-button">Lưu thông tin</button></div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img width="150px" [src]="imgUrl"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
+        <div class="form-group col-12">
+          <input type="file"
+                 id="file"
+                 #userPhoto
+                 (change)="onFileSelected(userPhoto.files)"
+                 name="image"
+                 autocomplete="off"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

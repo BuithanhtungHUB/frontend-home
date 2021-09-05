@@ -29,4 +29,4 @@ import { RegisterComponent } from './components/register/register.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

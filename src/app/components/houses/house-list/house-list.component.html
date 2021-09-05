@@ -98,7 +98,7 @@
 <div class="container w-100">
   <div class="row">
     <!-- Section Heading -->
-    <div class="col-12">
+    <div class="col-12 mt-5">
       <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
         <h6>Gợi ý cho bạn</h6>
         <h2>Top 5 căn hộ có nhiều lượt thuê nhất</h2>
@@ -123,71 +123,6 @@
         <p><i class="fas fa-dollar-sign"></i> 450,000đ/đêm</p>
       </div>
     </div>
-
-    <!-- Single Post Area -->
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-        <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
-        <!-- Post Meta -->
-        <div class="post-meta">
-          <a href="#" class="post-date">Homestay</a>
-          <a href="#" class="post-catagory">2 phòng ngủ</a>
-        </div>
-        <!-- Post Title -->
-        <a href="#" class="post-title">Homestay Hà Nội</a>
-        <p>View phố, có ban công, gần chợ</p>
-        <p><i class="fas fa-dollar-sign"></i> 450,000đ/đêm</p>
-      </div>
-    </div>
-
-    <!-- Single Post Area -->
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-        <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
-        <!-- Post Meta -->
-        <div class="post-meta">
-          <a href="#" class="post-date">Homestay</a>
-          <a href="#" class="post-catagory">2 phòng ngủ</a>
-        </div>
-        <!-- Post Title -->
-        <a href="#" class="post-title">Homestay Hà Nội</a>
-        <p>View phố, có ban công, gần chợ</p>
-        <p><i class="fas fa-dollar-sign"></i> 450,000đ/đêm</p>
-      </div>
-    </div>
-
-    <!-- Single Post Area -->
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-        <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
-        <!-- Post Meta -->
-        <div class="post-meta">
-          <a href="#" class="post-date">Homestay</a>
-          <a href="#" class="post-catagory">2 phòng ngủ</a>
-        </div>
-        <!-- Post Title -->
-        <a href="#" class="post-title">Homestay Hà Nội</a>
-        <p>View phố, có ban công, gần chợ</p>
-        <p><i class="fas fa-dollar-sign"></i> 450,000đ/đêm</p>
-      </div>
-    </div>
-
-    <!-- Single Post Area -->
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-        <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
-        <!-- Post Meta -->
-        <div class="post-meta">
-          <a href="#" class="post-date">Homestay</a>
-          <a href="#" class="post-catagory">2 phòng ngủ</a>
-        </div>
-        <!-- Post Title -->
-        <a href="#" class="post-title">Homestay Hà Nội</a>
-        <p>View phố, có ban công, gần chợ</p>
-        <p><i class="fas fa-dollar-sign"></i> 450,000đ/đêm</p>
-      </div>
-    </div>
-
 
   </div>
 </div>
@@ -245,196 +180,21 @@
 
     <div class="row">
       <!-- Single Post Area -->
-      <div class="col-12 col-md-6 col-lg-3">
+      <div *ngFor="let house of houses" class="col-12 col-md-6 col-lg-3">
         <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
           <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
           <!-- Post Meta -->
           <div class="post-meta">
-            <a href="#" class="post-date">Homestay</a>
-            <a href="#" class="post-catagory">2 phòng ngủ & 2 phòng tắm</a>
+            <p  class="post-date">{{houses.category}}</p>
+            <p class="post-catagory">{{house.bedroom}} phòng ngủ & {{house.bathroom}} phòng tắm</p>
           </div>
           <!-- Post Title -->
-          <a href="#" class="post-title">Hà Nội Homestay</a>
-          <p>Địa chỉ: Thanh Xuân, Hà Nội</p>
-          <p><i class="fas fa-dollar-sign"></i> 450,000đ/đêm</p>
+          <p href="#" class="post-title">{{house.name}}</p>
+          <p>{{house.address}}</p>
+          <p><i class="fas fa-dollar-sign"></i> {{house.price}}đ/đêm</p>
         </div>
       </div>
 
-      <!-- Single Post Area -->
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-          <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
-          <!-- Post Meta -->
-          <div class="post-meta">
-            <a href="#" class="post-date">Homestay</a>
-            <a href="#" class="post-catagory">2 phòng ngủ & 2 phòng tắm</a>
-          </div>
-          <!-- Post Title -->
-          <a href="#" class="post-title">Hà Nội Homestay</a>
-          <p>Địa chỉ: Thanh Xuân, Hà Nội</p>
-          <p><i class="fas fa-dollar-sign"></i> 450,000đ/đêm</p>
-        </div>
-      </div>
-
-      <!-- Single Post Area -->
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-          <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
-          <!-- Post Meta -->
-          <div class="post-meta">
-            <a href="#" class="post-date">Homestay</a>
-            <a href="#" class="post-catagory">2 phòng ngủ & 2 phòng tắm</a>
-          </div>
-          <!-- Post Title -->
-          <a href="#" class="post-title">Hà Nội Homestay</a>
-          <p>Địa chỉ: Thanh Xuân, Hà Nội</p>
-          <p><i class="fas fa-dollar-sign"></i> 450,000đ/đêm</p>
-        </div>
-      </div>
-
-      <!-- Single Post Area -->
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-          <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
-          <!-- Post Meta -->
-          <div class="post-meta">
-            <a href="#" class="post-date">Homestay</a>
-            <a href="#" class="post-catagory">2 phòng ngủ & 2 phòng tắm</a>
-          </div>
-          <!-- Post Title -->
-          <a href="#" class="post-title">Hà Nội Homestay</a>
-          <p>Địa chỉ: Thanh Xuân, Hà Nội</p>
-          <p><i class="fas fa-dollar-sign"></i> 450,000đ/đêm</p>
-        </div>
-      </div>
-
-      <!-- Single Post Area -->
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-          <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
-          <!-- Post Meta -->
-          <div class="post-meta">
-            <a href="#" class="post-date">Homestay</a>
-            <a href="#" class="post-catagory">2 phòng ngủ & 2 phòng tắm</a>
-          </div>
-          <!-- Post Title -->
-          <a href="#" class="post-title">Hà Nội Homestay</a>
-          <p>Địa chỉ: Thanh Xuân, Hà Nội</p>
-          <p><i class="fas fa-dollar-sign"></i> 450,000đ/đêm</p>
-        </div>
-      </div>
-
-      <!-- Single Post Area -->
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-          <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
-          <!-- Post Meta -->
-          <div class="post-meta">
-            <a href="#" class="post-date">Homestay</a>
-            <a href="#" class="post-catagory">2 phòng ngủ & 2 phòng tắm</a>
-          </div>
-          <!-- Post Title -->
-          <a href="#" class="post-title">Hà Nội Homestay</a>
-          <p>Địa chỉ: Thanh Xuân, Hà Nội</p>
-          <p><i class="fas fa-dollar-sign"></i> 450,000đ/đêm</p>
-        </div>
-      </div>
-
-      <!-- Single Post Area -->
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-          <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
-          <!-- Post Meta -->
-          <div class="post-meta">
-            <a href="#" class="post-date">Homestay</a>
-            <a href="#" class="post-catagory">2 phòng ngủ & 2 phòng tắm</a>
-          </div>
-          <!-- Post Title -->
-          <a href="#" class="post-title">Hà Nội Homestay</a>
-          <p>Địa chỉ: Thanh Xuân, Hà Nội</p>
-          <p><i class="fas fa-dollar-sign"></i> 450,000đ/đêm</p>
-        </div>
-      </div>
-
-      <!-- Single Post Area -->
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-          <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
-          <!-- Post Meta -->
-          <div class="post-meta">
-            <a href="#" class="post-date">Homestay</a>
-            <a href="#" class="post-catagory">2 phòng ngủ & 2 phòng tắm</a>
-          </div>
-          <!-- Post Title -->
-          <a href="#" class="post-title">Hà Nội Homestay</a>
-          <p>Địa chỉ: Thanh Xuân, Hà Nội</p>
-          <p><i class="fas fa-dollar-sign"></i> 450,000đ/đêm</p>
-        </div>
-      </div>
-
-      <!-- Single Post Area -->
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-          <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
-          <!-- Post Meta -->
-          <div class="post-meta">
-            <a href="#" class="post-date">Homestay</a>
-            <a href="#" class="post-catagory">2 phòng ngủ & 2 phòng tắm</a>
-          </div>
-          <!-- Post Title -->
-          <a href="#" class="post-title">Hà Nội Homestay</a>
-          <p>Địa chỉ: Thanh Xuân, Hà Nội</p>
-          <p><i class="fas fa-dollar-sign"></i> 450,000đ/đêm</p>
-        </div>
-      </div>
-
-      <!-- Single Post Area -->
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-          <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
-          <!-- Post Meta -->
-          <div class="post-meta">
-            <a href="#" class="post-date">Homestay</a>
-            <a href="#" class="post-catagory">2 phòng ngủ & 2 phòng tắm</a>
-          </div>
-          <!-- Post Title -->
-          <a href="#" class="post-title">Hà Nội Homestay</a>
-          <p>Địa chỉ: Thanh Xuân, Hà Nội</p>
-          <p><i class="fas fa-dollar-sign"></i> 450,000đ/đêm</p>
-        </div>
-      </div>
-
-      <!-- Single Post Area -->
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-          <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
-          <!-- Post Meta -->
-          <div class="post-meta">
-            <a href="#" class="post-date">Homestay</a>
-            <a href="#" class="post-catagory">2 phòng ngủ & 2 phòng tắm</a>
-          </div>
-          <!-- Post Title -->
-          <a href="#" class="post-title">Hà Nội Homestay</a>
-          <p>Địa chỉ: Thanh Xuân, Hà Nội</p>
-          <p><i class="fas fa-dollar-sign"></i> 450,000đ/đêm</p>
-        </div>
-      </div>
-
-      <!-- Single Post Area -->
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-          <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
-          <!-- Post Meta -->
-          <div class="post-meta">
-            <a href="#" class="post-date">Homestay</a>
-            <a href="#" class="post-catagory">2 phòng ngủ & 2 phòng tắm</a>
-          </div>
-          <!-- Post Title -->
-          <a href="#" class="post-title">Hà Nội Homestay</a>
-          <p>Địa chỉ: Thanh Xuân, Hà Nội</p>
-          <p><i class="fas fa-dollar-sign"></i> 450,000đ/đêm</p>
-        </div>
-      </div>
 
 
     </div>
