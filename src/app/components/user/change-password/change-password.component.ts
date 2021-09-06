@@ -39,6 +39,8 @@ export class ChangePasswordComponent implements OnInit {
           console.log('logout error')
         })
       })
+    }, errors=> {
+      console.log(errors);
     })
   }
 
