@@ -14,19 +14,33 @@
               <label for="user_name"><i class="fas fa-user-alt"></i></label>
               <input type="text" name="your_name" id="user_name" placeholder="User Name" formControlName="user_name"/>
             </div>
-
+            <div *ngIf="user_name?.invalid && (user_name?.dirty || user_name?.touched || messageError) ">
+              <p *ngIf="user_name?.errors?.required" class="text-danger">
+                Tên người dùng không được để trống
+              </p>
+            </div>
             <div class="form-group">
               <label for="your_pass"><i class="fas fa-lock"></i></label>
               <input type="password" name="your_pass" id="your_pass" placeholder="Password" formControlName="password"/>
             </div>
-
+            <div *ngIf="password?.invalid && (password?.dirty || password?.touched || messageError) ">
+              <p *ngIf="password?.errors?.required" class="text-danger">
+                Mật khẩu không được để trống
+              </p>
+              <p *ngIf="password?.errors?.minlength" class="text-danger">
+                Mật khẩu ít nhất 6 ký tự
+              </p>
+              <p *ngIf="password?.errors?.maxlength" class="text-danger">
+                Mật khẩu tối đa 8 ký tự
+              </p>
+            </div>
 
             <div class="form-group form-button">
               <button class="form-submit">Sign in</button>
             </div>
             <div>
-              <p *ngIf="messageUser" class="text-danger">Tên người dùng không được để trống</p>
-              <p *ngIf="messagePassword" class="text-danger">Mật khẩu không được để trống</p>
+<!--              <p *ngIf="messageUser" class="text-danger">Tên người dùng không được để trống</p>-->
+<!--              <p *ngIf="messagePassword" class="text-danger">Mật khẩu không được để trống</p>-->
               <!--              <p *ngIf="messageError" class="text-danger">Không được phép truy cập. <br> Vui lòng kiểm tra lại tên người dùng và mật khẩu!</p>-->
               <p *ngIf="messageError" class="text-danger">Mật khẩu hoặc tên người dùng không chính xác</p>
             </div>

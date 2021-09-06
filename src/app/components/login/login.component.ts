@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth.service";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 
 @Component({
@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.formLogin = this.fb.group({
-      user_name: [''],
-      password: ['']
+      user_name: ['',[Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6),Validators.maxLength(8)]]
     })
   }
 
@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', JSON.stringify(respone.access_token));
       localStorage.setItem('userLogin', JSON.stringify(respone.user));
       this.router.navigate(['']).then(respone => {
-        location.reload();
         this.messageSuccess = 'Đăng nhập thành công';
+        location.reload();
       })
     }, errors => {
       this.messageUser = JSON.stringify(errors.error.user_name);
@@ -42,4 +42,10 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  get user_name() {
+    return this.formLogin?.get('user_name');
+  }
+  get password() {
+    return this.formLogin?.get('password');
+  }
 }
