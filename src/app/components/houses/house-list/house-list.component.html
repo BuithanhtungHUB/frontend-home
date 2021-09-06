@@ -105,7 +105,7 @@
     <div class="col-12 mt-5">
       <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
         <h6>Gợi ý cho bạn</h6>
-        <h2>Top 5 căn hộ có nhiều lượt thuê nhất</h2>
+        <h2>Top {{count}} căn hộ có nhiều lượt thuê nhất</h2>
       </div>
     </div>
   </div>
@@ -113,18 +113,18 @@
   <div class="row">
 
     <!-- Single Post Area -->
-    <div class="col-12 col-md-6 col-lg-4">
+    <div class="col-12 col-md-6 col-lg-4" *ngFor="let top of topFive">
       <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
         <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
         <!-- Post Meta -->
         <div class="post-meta">
-          <a href="#" class="post-date">Homestay</a>
-          <a href="#" class="post-catagory">2 phòng ngủ</a>
+          <a href="#" class="post-date">{{top.house.bedroom}} phòng ngủ - {{top.house.bathroom}} phòng tắm</a>
+          <a href="#" class="post-catagory">{{top.house.address}}</a>
         </div>
         <!-- Post Title -->
-        <a href="#" class="post-title">Homestay Hà Nội</a>
-        <p>View phố, có ban công, gần chợ</p>
-        <p><i class="fas fa-dollar-sign"></i> 450,000đ/đêm</p>
+        <a href="#" class="post-title">{{top.house.name}}</a>
+<!--        <p>{{top.house.description}}</p>-->
+        <p><i class="fas fa-dollar-sign"></i> {{top.house.price}}đ/ngày</p>
       </div>
     </div>
 
