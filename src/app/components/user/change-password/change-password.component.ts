@@ -26,20 +26,26 @@ export class ChangePasswordComponent implements OnInit {
       new_password_confirmation: ['']
     })
   }
-
+  messageErrLogin: string | undefined;
   submit() {
-    let data = this.formChangePassword?.value;
-    console.log(data);
-    this.userService.changePassword(data).subscribe(respone => {
-      this.authService.logout().subscribe(res => {
-        localStorage.clear();
-        this.router.navigate(['']).then(r => {
-          console.log('logout success')
-        }).catch(error => {
-          console.log('logout error')
+    if (!this.messageConfirm) {
+      let data = this.formChangePassword?.value;
+      console.log(data);
+      this.userService.changePassword(data).subscribe(respone => {
+        this.authService.logout().subscribe(res => {
+          localStorage.clear();
+          this.router.navigate(['']).then(r => {
+            location.reload();
+            console.log('logout success')
+          }).catch(error => {
+            console.log('logout error')
+          })
         })
+      }, errors => {
+        console.log(errors);
+        this.messageErrLogin = errors.error.message;
       })
-    })
+    }
   }
 
   messageConfirm: string | undefined;
@@ -47,7 +53,7 @@ export class ChangePasswordComponent implements OnInit {
   validateConfirmPassword() {
     if ((this.formChangePassword?.value.new_password !== '') && (this.formChangePassword?.value.new_password_confirmation !== '')) {
       if (this.formChangePassword?.value.new_password !== this.formChangePassword?.value.new_password_confirmation) {
-        return this.messageConfirm = 'Mật khẩu không trùng khớp';
+        this.messageConfirm = 'Mật khẩu không trùng khớp';
       }
       else {
         this.messageConfirm = undefined;
@@ -55,6 +61,9 @@ export class ChangePasswordComponent implements OnInit {
     }
     else {
       this.messageConfirm = undefined;
+    }
+    if ((this.formChangePassword?.value.new_password !== '') && (this.formChangePassword?.value.new_password_confirmation == '')) {
+      this.messageConfirm = 'Chưa xác nhận mật khẩu mới';
     }
   }
 
