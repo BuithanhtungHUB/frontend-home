@@ -56,7 +56,18 @@
               <li><a routerLink="/" class="nav-link px-2 link-secondary"></a></li>
               <li><a style="font-size: 18px" routerLink="/news" class="nav-link px-2 link-dark">Tin tức</a></li>
               <li><a routerLink="/" class="nav-link px-2 link-secondary"></a></li>
-              <li><a style="font-size: 18px" href="/manager" class="nav-link px-2 link-dark">Chủ nhà</a></li>
+              <div  class="dropdown text-end mt-2" >
+                <a style="font-size: 18px" href="#"  class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                  Chủ nhà
+                </a>
+                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
+                  <li><a class="dropdown-item" routerLink="/manager/create-house">Đăng nhà cho thuê</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" routerLink="/manager/list-house">Danh sách nhà cho cho thuê</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" routerLink="/manager/order-list">Danh sách đơn thuê nhà</a></li>
+                </ul>
+              </div>
             </ul>
 
             <div  *ngIf="user" class="dropdown text-end">
