@@ -61,11 +61,11 @@
 
             <div *ngIf="user" class="dropdown text-end">
               <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="{{user.avatar}}" alt="mdo" width="32" height="32" class="rounded-circle">
+                <img src="{{user.avatar}}" alt="mdo" width="42" height="42" class="">
                 {{user.user_name}}
               </a>
               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
-                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" routerLink="/user/update-profile">Profile</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" (click)="logout()">Sign out</a></li>
               </ul>

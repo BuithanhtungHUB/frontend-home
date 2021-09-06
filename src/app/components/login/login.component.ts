@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       this.messageUser = JSON.stringify(errors.error.user_name);
       this.messagePassword = JSON.stringify(errors.error.password);
       this.messageError = JSON.stringify(errors.error.error);
-      // console.log(this.messageError,this.messagePassword, this.messageUser)
+      console.log(this.messageError,this.messagePassword, this.messageUser)
     })
   }
 

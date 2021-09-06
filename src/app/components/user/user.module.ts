@@ -17,7 +17,13 @@ const routes: Routes = [
   },
   {
     path: 'update-profile',
-    component: UpdateProfileComponent
+    component: UpdateProfileComponent,
+    // children: [
+    //   {
+    //     path: 'change-password',
+    //     component: ChangePasswordComponent
+    //   }
+    // ]
   },
   {
     path: 'change-password',
