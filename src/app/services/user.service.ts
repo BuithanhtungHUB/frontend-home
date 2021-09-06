@@ -15,4 +15,8 @@ export class UserService {
   updateProfile(data: any):Observable<any> {
     return this.http.post(environment.url_api + "auth/update-user-profile", data, {headers: this.authService.setHeader()});
   }
+
+  changePassword(data: any):Observable<any> {
+    return this.http.post(environment.url_api + "auth/change-password", data, {headers: this.authService.setHeader()});
+  }
 }
