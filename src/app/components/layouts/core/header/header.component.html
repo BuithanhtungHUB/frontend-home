@@ -42,7 +42,7 @@
     <div class="classy-nav-container breakpoint-off">
       <header class="p-3 mb-3 border-bottom">
         <div class="container">
-          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <div  class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
               <img src="/assets/img/core-img/HFH%20LOGO.png" style="height: 60px" alt="">
 <!--              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>-->
@@ -52,16 +52,16 @@
               <li><a routerLink="/" class="nav-link px-2 link-secondary"></a></li>
               <li><a routerLink="/" class="nav-link px-2 link-secondary"></a></li>
               <li><a routerLink="/" class="nav-link px-2 link-secondary"></a></li>
-              <li><a routerLink="/" class="nav-link px-2 link-secondary">Trang chủ</a></li>
+              <li><a style="font-size: 18px" routerLink="/" class="nav-link px-2 link-secondary">Trang chủ</a></li>
               <li><a routerLink="/" class="nav-link px-2 link-secondary"></a></li>
-              <li><a routerLink="/news" class="nav-link px-2 link-dark">Tin tức</a></li>
+              <li><a style="font-size: 18px" routerLink="/news" class="nav-link px-2 link-dark">Tin tức</a></li>
               <li><a routerLink="/" class="nav-link px-2 link-secondary"></a></li>
-              <li><a href="/manager" class="nav-link px-2 link-dark">Chủ nhà</a></li>
+              <li><a style="font-size: 18px" href="/manager" class="nav-link px-2 link-dark">Chủ nhà</a></li>
             </ul>
 
-            <div *ngIf="user" class="dropdown text-end">
-              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            <div  *ngIf="user" class="dropdown text-end">
+              <a style="font-size: 18px" href="#"  class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{{user.avatar}}" alt="mdo" width="60" height="60" class="rounded-circle">
                 {{user.user_name}}
               </a>
               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
