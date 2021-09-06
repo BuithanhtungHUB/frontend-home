@@ -17,6 +17,9 @@ export class HouseService {
     return new HttpHeaders().set("Authorization", "Bearer " + token);
   }
 
+  getTopFive(): Observable<any> {
+    return this.http.get(environment.url_api + 'auto-update');
+  }
 
   getHouseList(): Observable<any> {
     return this.http.get(environment.url_api+ 'get-all');
