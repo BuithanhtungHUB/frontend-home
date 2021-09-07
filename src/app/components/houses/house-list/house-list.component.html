@@ -115,7 +115,7 @@
     <!-- Single Post Area -->
     <div class="col-12 col-md-6 col-lg-4" *ngFor="let top of topFive">
       <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-        <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
+        <a href="#" class="post-thumbnail"><img src="{{top.images.url}}" alt=""></a>
         <!-- Post Meta -->
         <div class="post-meta">
           <a href="#" class="post-date">{{top.house.bedroom}} phòng ngủ - {{top.house.bathroom}} phòng tắm</a>
