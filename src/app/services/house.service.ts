@@ -32,4 +32,8 @@ export class HouseService {
   updateStatusHouse(data: any, id: any): Observable<any> {
     return this.http.post(environment.url_api + 'user/update-house/' + id, data, {headers: this.setHeader()});
   }
+
+  bookHouse(data: any, id: any): Observable<any> {
+    return this.http.post(environment.url_api + 'order/house-rent/' + id, data, {headers: this.setHeader()});
+  }
 }

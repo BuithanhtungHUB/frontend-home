@@ -48,6 +48,7 @@
             </div>
             <h6>Mô tả chung:</h6>
             <pre>{{houseDetail.description}}</pre>
+            <a routerLink="rent" class="btn btn-primary">Đặt thuê</a>
           </div>
         </div>
 
@@ -56,5 +57,6 @@
 
     </div>
   </div>
+  <router-outlet (activate)="onOutletLoaded($event)"></router-outlet>
 </div>
 <!-- Rooms Area End -->

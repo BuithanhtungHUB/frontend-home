@@ -55,7 +55,7 @@ export class CreateHouseComponent implements OnInit {
       price: ['', [Validators.required]],
       image: [''],
       user_id: [JSON.parse(<string>localStorage.getItem('userLogin')).id],
-      status: ['con trong'],
+      status: ['còn trống'],
     })
   }
 
