@@ -19,6 +19,14 @@ export class ManagerService {
     return this.http.post(environment.url_api + 'house/create', data, {headers: this.authService.setHeader()});
   }
 
+  getListOrderManager(): Observable<any> {
+    return this.http.get(environment.url_api + 'order/get-list', {headers: this.authService.setHeader()});
+  }
+
+  confirmOrder(id: number, data: any ) :Observable<any> {
+    return  this.http.post(environment.url_api + 'order/rent-confirm/' + id , data,{headers: this.authService.setHeader()} )
+  }
+
   getHousesManager() :Observable<any> {
     return this.http.get(environment.url_api + 'user/house-list', {headers: this.authService.setHeader()});
   }
