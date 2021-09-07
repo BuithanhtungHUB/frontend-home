@@ -8,6 +8,7 @@ import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../../../environments/environment";
 import {RouterModule, Routes} from "@angular/router";
 import { UserListComponent } from './user-list/user-list.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
   {
@@ -16,14 +17,21 @@ const routes: Routes = [
   },
   {
     path: 'update-profile',
-    component: UpdateProfileComponent
+    component: UpdateProfileComponent,
+    children: [
+      {
+        path: 'change-password',
+        component: ChangePasswordComponent
+      }
+    ]
   }
 ]
 
 @NgModule({
   declarations: [
     UpdateProfileComponent,
-    UserListComponent
+    UserListComponent,
+    ChangePasswordComponent
   ],
   imports: [
     [RouterModule.forChild(routes)],
