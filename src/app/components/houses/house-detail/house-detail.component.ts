@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HouseService} from "../../../services/house.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-house-detail',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HouseDetailComponent implements OnInit {
 
-  constructor() { }
+  houseDetail: any;
+  id: any;
+  user: any;
+  constructor(private houseService: HouseService,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.houseService.getHouseDetail(this.id).subscribe(res => {
+      console.log(res);
+      this.houseDetail = res;
+      this.user = JSON.parse(<string>localStorage.getItem('userLogin'));
+    })
+  }
+
+  updateStatus(element: any) {
+    let data = {
+      'status': element.value
+    };
+    this.houseService.updateStatusHouse(data, this.id).subscribe(res => {
+      console.log(res);
+    })
   }
 
 }

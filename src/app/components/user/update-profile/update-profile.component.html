@@ -32,7 +32,7 @@
           </div>
           <div class="row mt-3">
             <div class="col-md-12"><label class="labels">Địa chỉ</label>
-              <input type="text" class="form-control" placeholder="Địa chỉ" formControlName="address" [ngClass]="(address?.invalid && (address?.dirty || address?.touched)) ? 'is-invalid' : ''">
+              <input type="text" class="form-control" placeholder="Địa chỉ" formControlName="address">
             </div>
             <div *ngIf="address?.invalid && (address?.dirty || address?.touched)">
               <p *ngIf="address?.errors?.required" class="text-danger">
