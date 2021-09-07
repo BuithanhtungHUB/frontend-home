@@ -56,8 +56,8 @@ export class UpdateProfileComponent implements OnInit {
     this.formUpdateProfile = this.fb.group({
       avatar: [userLogin.avatar],
       user_name: [userLogin.user_name],
-      full_name: [userLogin.full_name, [Validators.required]],
-      address: [userLogin.address, [Validators.required]],
+      full_name: [userLogin.full_name],
+      address: [userLogin.address],
       phone: [userLogin.phone, [Validators.required, Validators.pattern(/(0)+[0-9]{9}\b/)]],
       email: [userLogin.email],
     })
@@ -80,14 +80,6 @@ export class UpdateProfileComponent implements OnInit {
 
   get username() {
     return this.formUpdateProfile?.get('user_name');
-  }
-
-  get fullName() {
-    return this.formUpdateProfile?.get('full_name');
-  }
-
-  get address() {
-    return this.formUpdateProfile?.get('address');
   }
 
   get phoneNumber() {

@@ -12,12 +12,12 @@
     <div class="col">
       <div class="row">
         <div class="row mt-5">
-          <div class="col-12 col-md-6 col-lg-4" *ngFor="let house of houses">
+          <div class="col-12 col-md-6 col-lg-6" *ngFor="let house of houses">
             <!-- Single Room Area -->
             <div class="single-room-area d-flex align-items-center mb-100 wow fadeInUp" data-wow-delay="100ms">
               <!-- Room Thumbnail -->
               <div class="room-thumbnail">
-                <img height="230px" width="350px" [src]="house.images[0].url" alt="">
+                <img [src]="house.images[0].url" alt="">
               </div>
               <!-- Room Content -->
               <div class="room-content">

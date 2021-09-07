@@ -14,7 +14,7 @@
         <div class="form-group">
           <label>Loại nhà</label>
           <br>
-          <select formControlName="category_id">
+          <select class="form-select col-3" formControlName="category_id">
             <option value="1">Homestay</option>
             <option value="2">Nhà riêng</option>
             <option value="3">Biệt thự</option>
@@ -35,7 +35,7 @@
         <div class="form-group">
           <label>Số lượng phòng ngủ</label>
           <br>
-          <select formControlName="bedroom">
+          <select class="form-select col-2" formControlName="bedroom">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -51,7 +51,7 @@
         <div class="form-group">
           <label>Số lượng phòng tắm</label>
           <br>
-          <select formControlName="bathroom">
+          <select class="form-select col-2" formControlName="bathroom">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -60,7 +60,7 @@
         <div class="form-group">
           <label>Mô tả chung</label>
           <br>
-          <textarea cols="60" rows="10" formControlName="description" [ngClass]="(description?.invalid && (description?.dirty || description?.touched)) ? 'is-invalid' : ''"></textarea>
+          <textarea class="form-control" cols="60" rows="10" formControlName="description" [ngClass]="(description?.invalid && (description?.dirty || description?.touched)) ? 'is-invalid' : ''"></textarea>
         </div>
         <div *ngIf="description?.invalid && (description?.dirty || description?.touched)">
           <p *ngIf="description?.errors?.required" class="text-danger">
@@ -78,9 +78,9 @@
         </div>
       </div>
       <div class="col-md-4">
-        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img width="150px" [src]="imgUrl"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img width="300px" [src]="imgUrl"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
         <div class="form-group col-12">
-          <input type="file"
+          <input class="form-control-file" type="file"
                  id="file"
                  #userPhoto
                  (change)="onFileSelected(userPhoto.files)"

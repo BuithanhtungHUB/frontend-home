@@ -12,6 +12,7 @@ export class HouseDetailComponent implements OnInit {
   houseDetail: any;
   id: any;
   user: any;
+  orders: any;
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute) { }
 
@@ -21,6 +22,10 @@ export class HouseDetailComponent implements OnInit {
       console.log(res);
       this.houseDetail = res;
       this.user = JSON.parse(<string>localStorage.getItem('userLogin'));
+    })
+    this.houseService.orderHouse(this.id).subscribe(res => {
+      console.log(res);
+      this.orders = res;
     })
   }
 

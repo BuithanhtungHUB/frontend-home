@@ -72,7 +72,7 @@
 
             <div  *ngIf="user" class="dropdown text-end">
               <a style="font-size: 18px" href="#"  class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="{{user.avatar}}" alt="mdo" width="60" height="60" class="rounded-circle">
+                <img [src]="user.avatar" alt="mdo" width="60" height="60" class="rounded-circle">
                 {{user.user_name}}
               </a>
               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
