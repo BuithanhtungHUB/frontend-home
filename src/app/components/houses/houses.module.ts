@@ -17,7 +17,7 @@ const routes: Routes = [
     children: [
       {
         path: 'rent',
-        component: RentHouseComponent
+        component: RentHouseComponent,
       }
     ]
   }

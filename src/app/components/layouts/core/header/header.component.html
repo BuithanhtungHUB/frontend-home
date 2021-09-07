@@ -56,8 +56,8 @@
               <li><a routerLink="/" class="nav-link px-2 link-secondary"></a></li>
               <li><a style="font-size: 18px" routerLink="/news" class="nav-link px-2 link-dark">Tin tức</a></li>
               <li><a routerLink="/" class="nav-link px-2 link-secondary"></a></li>
-              <div  class="dropdown text-end mt-2" >
-                <a style="font-size: 18px" href="#"  class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+              <div *ngIf="user"  class="dropdown text-end mt-2" >
+                <a *ngIf="user.role == 'manager'" style="font-size: 18px" href="#"  class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                   Chủ nhà
                 </a>
                 <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
