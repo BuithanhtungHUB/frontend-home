@@ -40,14 +40,15 @@
               <h6>Số phòng tắm: <span>{{houseDetail.bathroom}}</span></h6>
               <h6 *ngIf="user.role == 'manager' && houseDetail.user.id == user.id">Trạng thái: &nbsp;&nbsp;
                 <select #element (change)="updateStatus(element)">
-                  <option value="con trong" [selected]="houseDetail.status == 'con trong'">Còn trống</option>
-                  <option value="da thue" [selected]="houseDetail.status == 'da thue'">Đã thuê</option>
-                  <option value="dang nang cap" [selected]="houseDetail.status == 'dang nang cap'">Đang nâng cấp</option>
+                  <option value="còn trống" [selected]="houseDetail.status == 'còn trống'">Còn trống</option>
+                  <option value="đã thuê" [selected]="houseDetail.status == 'đã thuê'">Đã thuê</option>
+                  <option value="đang nâng cấp" [selected]="houseDetail.status == 'đang nâng cấp'">Đang nâng cấp</option>
                 </select>
               </h6>
             </div>
             <h6>Mô tả chung:</h6>
             <pre>{{houseDetail.description}}</pre>
+            <a *ngIf="user.role == 'user'" routerLink="rent" class="btn btn-primary">Đặt thuê</a>
           </div>
         </div>
 
@@ -56,5 +57,6 @@
 
     </div>
   </div>
+  <router-outlet (activate)="onOutletLoaded($event)"></router-outlet>
 </div>
 <!-- Rooms Area End -->

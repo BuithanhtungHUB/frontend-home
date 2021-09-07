@@ -33,4 +33,9 @@ export class HouseDetailComponent implements OnInit {
     })
   }
 
+  onOutletLoaded(component: any) {
+    component.price = this.houseDetail.price;
+    component.id = +this.id;
+  }
+
 }
