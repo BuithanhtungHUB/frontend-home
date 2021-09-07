@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ManagerService} from "../../../services/manager.service";
 
 @Component({
   selector: 'app-manager-list-house',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManagerListHouseComponent implements OnInit {
 
-  constructor() { }
+  houses: any;
+  constructor(private managerService: ManagerService) { }
 
   ngOnInit(): void {
+    this.managerService.getHousesManager().subscribe(res => {
+      console.log(res);
+      this.houses = res.houses;
+    })
   }
 
 }

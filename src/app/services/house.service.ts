@@ -24,4 +24,12 @@ export class HouseService {
   getHouseList(): Observable<any> {
     return this.http.get(environment.url_api+ 'get-all');
   }
+
+  getHouseDetail(id: any): Observable<any> {
+    return this.http.get(environment.url_api + 'get-id/' + id);
+  }
+
+  updateStatusHouse(data: any, id: any): Observable<any> {
+    return this.http.post(environment.url_api + 'user/update-house/' + id, data, {headers: this.setHeader()});
+  }
 }

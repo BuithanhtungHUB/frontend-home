@@ -186,14 +186,14 @@
       <!-- Single Post Area -->
       <div *ngFor="let house of houses" class="col-12 col-md-6 col-lg-3">
         <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-          <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
+          <a routerLink="/{{house.id}}/detail" class="post-thumbnail"><img [src]="house.images[0].url" alt=""></a>
           <!-- Post Meta -->
           <div class="post-meta">
             <p  class="post-date">{{houses.category}}</p>
             <p class="post-catagory">{{house.bedroom}} phòng ngủ & {{house.bathroom}} phòng tắm</p>
           </div>
           <!-- Post Title -->
-          <p href="#" class="post-title">{{house.name}}</p>
+          <a routerLink="/{{house.id}}/detail" class="post-title">{{house.name}}</a>
           <p>{{house.address}}</p>
           <p><i class="fas fa-dollar-sign"></i> {{house.price}}đ/đêm</p>
         </div>

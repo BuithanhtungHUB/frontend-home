@@ -1,1 +1,97 @@
-<p>create-house works!</p>
+<div class="container col-7">
+  <form *ngIf="formCreateHouse" [formGroup]="formCreateHouse" (ngSubmit)="submit()">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="form-group">
+          <label>Tên căn nhà</label>
+          <input type="text" class="form-control col-6" placeholder="Nhập vào tên căn nhà" formControlName="name" [ngClass]="(name?.invalid && (name?.dirty || name?.touched)) ? 'is-invalid' : ''">
+        </div>
+        <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+          <p *ngIf="name?.errors?.required" class="text-danger">
+            Không được để trống tên nhà
+          </p>
+        </div>
+        <div class="form-group">
+          <label>Loại nhà</label>
+          <br>
+          <select formControlName="category_id">
+            <option value="1">Homestay</option>
+            <option value="2">Nhà riêng</option>
+            <option value="3">Biệt thự</option>
+            <option value="4">Resort</option>
+            <option value="5">Villa</option>
+            <option value="6">Penthouse</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Địa chỉ</label>
+          <input type="text" class="form-control col-8" placeholder="Nhập vào địa chỉ" formControlName="address" [ngClass]="(address?.invalid && (address?.dirty || address?.touched)) ? 'is-invalid' : ''">
+        </div>
+        <div *ngIf="address?.invalid && (address?.dirty || address?.touched)">
+          <p *ngIf="address?.errors?.required" class="text-danger">
+            Không được để trống địa chỉ nhà
+          </p>
+        </div>
+        <div class="form-group">
+          <label>Số lượng phòng ngủ</label>
+          <br>
+          <select formControlName="bedroom">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Số lượng phòng tắm</label>
+          <br>
+          <select formControlName="bathroom">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mô tả chung</label>
+          <br>
+          <textarea cols="60" rows="10" formControlName="description" [ngClass]="(description?.invalid && (description?.dirty || description?.touched)) ? 'is-invalid' : ''"></textarea>
+        </div>
+        <div *ngIf="description?.invalid && (description?.dirty || description?.touched)">
+          <p *ngIf="description?.errors?.required" class="text-danger">
+            Không được để trống mô tả chung
+          </p>
+        </div>
+        <div class="form-group">
+          <label>Giá tiền theo ngày</label>
+          <input type="number" class="form-control col-5" placeholder="Nhập vào giá tiền theo ngày" formControlName="price" [ngClass]="(price?.invalid && (price?.dirty || price?.touched)) ? 'is-invalid' : ''">
+        </div>
+        <div *ngIf="price?.invalid && (price?.dirty || price?.touched)">
+          <p *ngIf="price?.errors?.required" class="text-danger">
+            Không được để trống giá tiền theo ngày
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img width="150px" [src]="imgUrl"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
+        <div class="form-group col-12">
+          <input type="file"
+                 id="file"
+                 #userPhoto
+                 (change)="onFileSelected(userPhoto.files)"
+                 name="image"
+                 autocomplete="off"
+          />
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary">Đăng nhà</button>
+  </form>
+</div>
+<br>
