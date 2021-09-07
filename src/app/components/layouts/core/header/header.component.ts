@@ -1,4 +1,4 @@
-import { Component, OnInit , OnChanges} from '@angular/core';
+import { Component, OnInit, DoCheck} from '@angular/core';
 import {AuthService} from "../../../../services/auth.service";
 import {Router} from "@angular/router";
 import {UserService} from "../../../../services/user.service";
@@ -8,10 +8,9 @@ import {UserService} from "../../../../services/user.service";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, DoCheck {
   user: any ;
   user_name: any;
-  messageSuccess: any;
   constructor(private authService: AuthService,
               private router: Router) { }
 
@@ -20,6 +19,9 @@ export class HeaderComponent implements OnInit {
     console.log(this.user);
   }
 
+  ngDoCheck() {
+    this.user = JSON.parse(<string>this.authService.getUser());
+  }
 
   logout() {
     this.authService.logout().subscribe(res => {
