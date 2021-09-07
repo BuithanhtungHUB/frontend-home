@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
+import {AuthService} from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +10,9 @@ import {environment} from "../../environments/environment";
 export class HouseService {
 
   constructor(
-    private http: HttpClient
-  ) {
-  }
-  setHeader() {
-    let token = JSON.parse(<string>localStorage.getItem('token'));
-    return new HttpHeaders().set("Authorization", "Bearer " + token);
-  }
+    private http: HttpClient,
+    private authService: AuthService
+  ) {}
 
   getTopFive(): Observable<any> {
     return this.http.get(environment.url_api + 'auto-update');
@@ -25,11 +22,15 @@ export class HouseService {
     return this.http.get(environment.url_api+ 'get-all');
   }
 
+  cancelOrder(id: any): Observable<any> {
+    return this.http.post(environment.url_api + 'order/cancel-rent/' +id,null,{headers: this.authService.setHeader()});
+  }
+
   getHouseDetail(id: any): Observable<any> {
     return this.http.get(environment.url_api + 'get-id/' + id);
   }
 
   updateStatusHouse(data: any, id: any): Observable<any> {
-    return this.http.post(environment.url_api + 'user/update-house/' + id, data, {headers: this.setHeader()});
+    return this.http.post(environment.url_api + 'user/update-house/' + id, data, {headers: this.authService.setHeader()});
   }
 }
