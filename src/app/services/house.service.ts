@@ -26,7 +26,7 @@ export class HouseService {
   }
 
   getHouseDetail(id: any): Observable<any> {
-    return this.http.get(environment.url_api + 'house/get-id/' + id, {headers: this.setHeader()});
+    return this.http.get(environment.url_api + 'get-id/' + id);
   }
 
   updateStatusHouse(data: any, id: any): Observable<any> {

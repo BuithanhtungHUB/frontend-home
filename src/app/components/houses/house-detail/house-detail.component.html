@@ -38,7 +38,7 @@
               <h6>Địa chỉ: <span>{{houseDetail.address}}</span></h6>
               <h6>Số phòng ngủ: <span>{{houseDetail.bedroom}}</span></h6>
               <h6>Số phòng tắm: <span>{{houseDetail.bathroom}}</span></h6>
-              <h6>Trạng thái: &nbsp;&nbsp;
+              <h6 *ngIf="user.role == 'manager'">Trạng thái: &nbsp;&nbsp;
                 <select #element (change)="updateStatus(element)">
                   <option value="con trong" [selected]="houseDetail.status == 'con trong'">Còn trống</option>
                   <option value="da thue" [selected]="houseDetail.status == 'da thue'">Đã thuê</option>
