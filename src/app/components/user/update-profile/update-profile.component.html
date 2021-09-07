@@ -1,10 +1,21 @@
 <form *ngIf="formUpdateProfile" [formGroup]="formUpdateProfile" (ngSubmit)="submit()">
   <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
-      <div class="col-md-5 border-right">
+      <div class="col-md-6 border-right">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img width="150px" [src]="imgUrl"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
+        <div class="form-group col-12">
+          <input type="file"
+                 id="file"
+                 #userPhoto
+                 (change)="onFileSelected(userPhoto.files)"
+                 name="image"
+                 autocomplete="off"
+          />
+        </div>
         <div class="p-3 py-5">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h4 class="text-right">Cập nhật thông tin</h4>
+            <a routerLink="change-password" class="btn btn-danger">Đổi mật khẩu</a>
           </div>
           <div class="row mt-2">
             <div class="col-md-12"><label class="labels text-danger">Username (Không được phép thay đổi)</label>
@@ -35,8 +46,6 @@
               <p *ngIf="phoneNumber?.errors?.required" class="text-danger">
                 Không được để trống số điện thoại
               </p>
-            </div>
-            <div *ngIf="phoneNumber?.invalid && phoneNumber?.touched">
               <p *ngIf="phoneNumber?.errors?.pattern" class="text-danger">
                 Không đúng chuẩn
               </p>
@@ -46,19 +55,11 @@
             </div>
           </div>
           <div class="mt-5 text-center"><button class="btn btn-primary profile-button">Lưu thông tin</button></div>
+          <div class="mt-5 text-left"><a class="btn btn-primary" routerLink="/">Trang chủ</a></div>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img width="150px" [src]="imgUrl"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
-        <div class="form-group col-12">
-          <input type="file"
-                 id="file"
-                 #userPhoto
-                 (change)="onFileSelected(userPhoto.files)"
-                 name="image"
-                 autocomplete="off"
-          />
-        </div>
+      <div class="col-md-6">
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>
