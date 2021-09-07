@@ -9,6 +9,7 @@ import {environment} from "../../../environments/environment";
 import {RouterModule, Routes} from "@angular/router";
 import { UserListComponent } from './user-list/user-list.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ListOrderOfUserComponent } from './list-order-of-user/list-order-of-user.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
         component: ChangePasswordComponent
       }
     ]
+  },
+  {
+    path: 'list-order-of-user',
+    component: ListOrderOfUserComponent
   }
 ]
 
@@ -31,7 +36,8 @@ const routes: Routes = [
   declarations: [
     UpdateProfileComponent,
     UserListComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    ListOrderOfUserComponent
   ],
   imports: [
     [RouterModule.forChild(routes)],

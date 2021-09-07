@@ -19,4 +19,12 @@ export class UserService {
   changePassword(data: any):Observable<any> {
     return this.http.post(environment.url_api + "auth/change-password", data, {headers: this.authService.setHeader()});
   }
+
+  getUserProfile():Observable<any> {
+    return this.http.post(environment.url_api + 'auth/user-profile', {headers: this.authService.setHeader()});
+  }
+
+  getRentHistotry(): Observable<any>{
+    return this.http.get(environment.url_api + 'order/rent-history',{headers: this.authService.setHeader()});
+  }
 }

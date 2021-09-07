@@ -44,15 +44,15 @@
         <div class="container">
           <div  class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-              <img src="/assets/img/core-img/HFH%20LOGO.png" style="height: 60px" alt="">
+              <img src="/assets/img/core-img/HFH%20LOGO.png" style="height: 55px; width: 55px" alt="">
 <!--              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>-->
             </a>
 
             <ul  class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><a routerLink="/" class="nav-link px-2 link-secondary"></a></li>
-              <li><a routerLink="/" class="nav-link px-2 link-secondary"></a></li>
-              <li><a routerLink="/" class="nav-link px-2 link-secondary"></a></li>
-              <li><a style="font-size: 18px" routerLink="/" class="nav-link px-2 link-secondary">Trang chủ</a></li>
+              <li><a  class="nav-link px-2 link-secondary"></a></li>
+              <li><a  class="nav-link px-2 link-secondary"></a></li>
+              <li><a  class="nav-link px-2 link-secondary"></a></li>
+              <li><a style="font-size: 18px" href="/" class="nav-link px-2 link-secondary">Trang chủ</a></li>
               <li><a routerLink="/" class="nav-link px-2 link-secondary"></a></li>
               <li><a style="font-size: 18px" routerLink="/news" class="nav-link px-2 link-dark">Tin tức</a></li>
               <li><a routerLink="/" class="nav-link px-2 link-secondary"></a></li>
@@ -76,14 +76,16 @@
                 {{user.user_name}}
               </a>
               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
-                <li><a class="dropdown-item" routerLink="/user/update-profile">Profile</a></li>
+                <li><a class="dropdown-item" routerLink="/user/list-order-of-user">Lịch sử thuê nhà</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="logout()">Sign out</a></li>
+                <li><a class="dropdown-item" routerLink="/user/update-profile">Cài đặt tài khoản</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" (click)="logout()">Đăng xuất</a></li>
               </ul>
             </div>
             <div *ngIf="!user" class="col-md-3 text-end">
-              <a routerLink="/login" type="button" class="btn btn-outline-primary me-2">Login</a>
-              <a routerLink="/register" type="button" class="btn btn-outline-primary me-2">Sign-up</a>
+              <a routerLink="/login" type="button" class="btn btn-outline-primary me-2">Đăng nhập</a>
+              <a routerLink="/register" type="button" class="btn btn-outline-primary me-2">Đăng ký</a>
             </div>
           </div>
         </div>
