@@ -40,53 +40,120 @@
   <!-- Main Header Start -->
   <div class="main-header-area">
     <div class="classy-nav-container breakpoint-off">
-      <header class="p-3 mb-3 border-bottom">
+      <header class="p-3 border-bottom">
         <div class="container">
-          <div  class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-              <img src="/assets/img/core-img/logo%20HFH.png" style="height: 55px; width: 55px" alt="">
-<!--              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>-->
+              <img src="/assets/img/core-img/logo%20HFH.png" style="height: 95px; width: 95px" alt="Home From Home">
             </a>
+            <div class="hotel-search-form-area">
+              <div class="container-fluid">
+                <div class="hotel-search-form">
+                  <form *ngIf="formSearch" [formGroup]="formSearch" (ngSubmit)="submit()">
+                    <div class="row">
+                      <div class="row col-md-8 align-items-end">
+                        <div class="col-3 col-md-8 col-lg-3 ">
+                          <label for="checkIn" class="col-form-label">Nhận phòng</label>
+                          <input type="date" class="form-control" id="checkIn" name="checkin-date">
+                        </div>
+                        <div class="col-3 col-md-8 col-lg-3 ">
+                          <label for="checkOut">Trả phòng</label>
+                          <input type="date" class="form-control" id="checkOut" name="checkout-date">
+                        </div>
+                        <div class="col-3 col-md-8 col-lg-3 ">
+                          <label for="2">Địa điểm</label>
+                          <input type="text" class="form-control" id="2">
+                        </div>
+                        <div class="col-3 col-md-8 col-lg-3 ">
+                          <label for="children">Giá (VNĐ)</label>
+                          <select name="children" id="children" class="form-control">
+                            <option value="10000">100.000</option>
+                            <option value="20000">200.000</option>
+                            <option value="30000">300.000</option>
+                            <option value="40000">400.000</option>
+                            <option value="50000">500.000</option>
+                            <option value="100000">1.000.000</option>
+                            <option value="20000">2.000.000</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row col-md-4 align-items-end">
+                        <div class="col-6 col-md-4 col-lg-6">
+                          <label for="room">Phòng ngủ</label>
+                          <select name="room" id="room" class="form-control">
 
-            <ul  class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><a  class="nav-link px-2 link-secondary"></a></li>
-              <li><a  class="nav-link px-2 link-secondary"></a></li>
-              <li><a  class="nav-link px-2 link-secondary"></a></li>
-              <li><a style="font-size: 18px" href="/" class="nav-link px-2 link-secondary">Trang chủ</a></li>
-              <li><a routerLink="/" class="nav-link px-2 link-secondary"></a></li>
-              <li><a style="font-size: 18px" routerLink="/news" class="nav-link px-2 link-dark">Tin tức</a></li>
-              <li><a routerLink="/" class="nav-link px-2 link-secondary"></a></li>
-              <div *ngIf="user"  class="dropdown text-end mt-2" >
-                <a *ngIf="user.role == 'manager'" style="font-size: 18px" href="#"  class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                  Chủ nhà
-                </a>
-                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
-                  <li><a class="dropdown-item" routerLink="/manager/create-house">Đăng nhà cho thuê</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" routerLink="/manager/list-house">Danh sách nhà cho cho thuê</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" routerLink="/manager/order-list">Danh sách đơn thuê nhà</a></li>
-                </ul>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                          </select>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-6">
+                          <label for="adults">Phòng tắm</label>
+                          <select name="adults" id="adults" class="form-control">
+
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row col-md-1 align-items-end">
+                        <div class="col-12 col-md-1 col-lg-12">
+                          <button type="submit" class="form-control button-circle"><i class="fas fa-search"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
               </div>
-            </ul>
-
-            <div  *ngIf="user" class="dropdown text-end">
-              <a style="font-size: 18px" href="#"  class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img [src]="user.avatar" alt="mdo" width="60" height="60" class="rounded-circle">
+            </div>
+            <div *ngIf="user" class="dropdown text-end">
+              <a style="font-size: 18px" href="#" class="d-block link-dark text-decoration-none dropdown-toggle"
+                 id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img [src]="user.avatar" alt="mdo" width="55" height="55" class="rounded-circle">
                 {{user.user_name}}
               </a>
               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
                 <li><a class="dropdown-item" routerLink="/user/list-order-of-user">Lịch sử thuê nhà</a></li>
-                <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" routerLink="/user/update-profile">Cài đặt tài khoản</a></li>
-                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li *ngIf="user.role == 'manager'"><a class="dropdown-item" routerLink="/manager/create-house">Đăng nhà
+                  cho thuê</a></li>
+                <li *ngIf="user.role == 'manager'"><a class="dropdown-item" routerLink="/manager/list-house">Danh sách
+                  nhà cho cho thuê</a></li>
+                <li *ngIf="user.role == 'manager'"><a class="dropdown-item" routerLink="/manager/order-list">Danh sách
+                  đơn thuê nhà</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
                 <li><a class="dropdown-item" (click)="logout()">Đăng xuất</a></li>
               </ul>
             </div>
-            <div *ngIf="!user" class="col-md-3 text-end">
-              <a routerLink="/login" type="button" class="btn btn-outline-primary me-2">Đăng nhập</a>
-              <a routerLink="/register" type="button" class="btn btn-outline-primary me-2">Đăng ký</a>
+            <div *ngIf="!user" class="dropdown text-end">
+              <a style="font-size: 18px" href="#" class="d-block link-dark text-decoration-none dropdown-toggle"
+                 id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="assets/img/bg-img/avatar-default.jpg" alt="mdo" width="55" height="55" class="rounded-circle">
+              </a>
+              <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
+                <li><a class="dropdown-item" routerLink="/login">Đăng nhập</a></li>
+                <li><a class="dropdown-item" routerLink="/register">Đăng ký</a></li>
+              </ul>
             </div>
+<!--            <div *ngIf="!user" class="col-md-3 text-end">-->
+<!--              <a routerLink="/login" type="button" class="btn btn-outline-primary me-2">Đăng nhập</a>-->
+<!--              <a routerLink="/register" type="button" class="btn btn-outline-primary me-2">Đăng ký</a>-->
+<!--            </div>-->
           </div>
         </div>
       </header>

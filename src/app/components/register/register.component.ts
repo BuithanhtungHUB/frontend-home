@@ -41,13 +41,14 @@ export class RegisterComponent implements OnInit {
     this.authService.register(data).subscribe(respone => {
       this.router.navigate(['/login']).then(respone => {
         this.messageSuccess = 'Đăng ký thành công';
-        console.log(this.messageSuccess);
+        alert('Đăng ký thành công');
+        // console.log(this.messageSuccess);
       })
     }, errors => {
       this.messageError = JSON.stringify(errors.error);
       this.messagePasswordConfirm = JSON.stringify(errors.error.password) ;
       this.messageRole = JSON.stringify(errors.error.role);
-      console.log( this.messagePasswordConfirm, this.messageRole, this.messageError);
+      // console.log( this.messagePasswordConfirm, this.messageRole, this.messageError);
     } )
   }
 

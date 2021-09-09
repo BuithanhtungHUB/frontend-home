@@ -2,6 +2,8 @@ import { Component, OnInit, DoCheck} from '@angular/core';
 import {AuthService} from "../../../../services/auth.service";
 import {Router} from "@angular/router";
 import {UserService} from "../../../../services/user.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {HouseService} from "../../../../services/house.service";
 
 @Component({
   selector: 'app-header',
@@ -11,12 +13,24 @@ import {UserService} from "../../../../services/user.service";
 export class HeaderComponent implements OnInit, DoCheck {
   user: any ;
   user_name: any;
+  formSearch: FormGroup |undefined;
+  message: any;
   constructor(private authService: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private fb: FormBuilder,
+              private houseService: HouseService) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(<string>this.authService.getUser());
-    console.log(this.user);
+    // console.log(this.user);
+    this.formSearch = this.fb.group({
+      start_date: [''],
+      end_date: [''],
+      address: [''],
+      price: [''],
+      bedroom: [''],
+      bathroom: ['']
+    })
   }
 
   ngDoCheck() {
@@ -34,4 +48,13 @@ export class HeaderComponent implements OnInit, DoCheck {
       })
     })
   }
+
+  submit() {
+  let data = this.formSearch?.value;
+  this.houseService.searchHouse(data).subscribe(res =>{
+    this.message = res;
+    console.log(this.message);
+  })}
 }
+
+
