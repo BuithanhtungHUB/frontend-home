@@ -12,6 +12,7 @@ export class HouseDetailComponent implements OnInit {
   houseDetail: any;
   id: any;
   user: any;
+  orders: any;
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute) { }
 
@@ -22,6 +23,10 @@ export class HouseDetailComponent implements OnInit {
       this.houseDetail = res;
       this.user = JSON.parse(<string>localStorage.getItem('userLogin'));
     })
+    this.houseService.orderHouse(this.id).subscribe(res => {
+      console.log(res);
+      this.orders = res;
+    })
   }
 
   updateStatus(element: any) {
@@ -31,6 +36,11 @@ export class HouseDetailComponent implements OnInit {
     this.houseService.updateStatusHouse(data, this.id).subscribe(res => {
       console.log(res);
     })
+  }
+
+  onOutletLoaded(component: any) {
+    component.price = this.houseDetail.price;
+    component.id = +this.id;
   }
 
 }

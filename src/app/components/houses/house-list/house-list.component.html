@@ -2,19 +2,19 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="/assets/img/bg-img/5.jpg" style="height: 600px" class="d-block w-100 " alt="...">
+      <img src="/assets/img/bg-img/trip.jpg" style="height: 700px" class="d-block w-100 " alt="...">
     </div>
     <div class="carousel-item">
-      <img src="/assets/img/bg-img/7.jpg" style="height: 600px" class="d-block w-100" alt="...">
+      <img src="/assets/img/bg-img/paradise6.jpg" style="height: 700px" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="/assets/img/bg-img/8.jpg" style="height: 600px" class="d-block w-100" alt="...">
+      <img src="/assets/img/bg-img/slider_3.png" style="height: 700px" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="/assets/img/bg-img/6.jpg" style="height: 600px" class="d-block w-100" alt="...">
+      <img src="/assets/img/bg-img/penthouse.png" style="height: 700px" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="/assets/img/bg-img/9.jpg" style="height: 600px" class="d-block w-100" alt="...">
+      <img src="/assets/img/bg-img/9.jpg" style="height: 700px" class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -115,14 +115,14 @@
     <!-- Single Post Area -->
     <div class="col-12 col-md-6 col-lg-4" *ngFor="let top of topFive">
       <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-        <a href="#" class="post-thumbnail"><img src="/assets/img/bg-img/2.jpg" alt=""></a>
+        <a href="#" class="post-thumbnail"><img src="{{top.images.url}}" alt=""></a>
         <!-- Post Meta -->
         <div class="post-meta">
           <a href="#" class="post-date">{{top.house.bedroom}} phòng ngủ - {{top.house.bathroom}} phòng tắm</a>
           <a href="#" class="post-catagory">{{top.house.address}}</a>
         </div>
         <!-- Post Title -->
-        <a href="#" class="post-title">{{top.house.name}}</a>
+        <a routerLink="/{{top.house.id}}/detail" class="post-title">{{top.house.name}}</a>
 <!--        <p>{{top.house.description}}</p>-->
         <p><i class="fas fa-dollar-sign"></i> {{top.house.price}}đ/ngày</p>
       </div>

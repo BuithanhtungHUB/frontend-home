@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import {HouseListComponent} from "./house-list/house-list.component";
 import {HouseDetailComponent} from "./house-detail/house-detail.component";
 import {RouterModule, Routes} from "@angular/router";
+import { RentHouseComponent } from './rent-house/rent-house.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 const routes: Routes = [
   {
@@ -11,18 +13,26 @@ const routes: Routes = [
   },
   {
     path: ':id/detail',
-    component: HouseDetailComponent
+    component: HouseDetailComponent,
+    children: [
+      {
+        path: 'rent',
+        component: RentHouseComponent,
+      }
+    ]
   }
 ]
 
 @NgModule({
   declarations: [
     HouseListComponent,
-    HouseDetailComponent
+    HouseDetailComponent,
+    RentHouseComponent
   ],
   imports: [
     [RouterModule.forChild(routes)],
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ]
 })
 export class HousesModule { }

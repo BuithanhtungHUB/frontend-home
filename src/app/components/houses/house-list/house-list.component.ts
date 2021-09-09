@@ -22,7 +22,6 @@ export class HouseListComponent implements OnInit {
       this.count = this.topFive.length;
       console.log(this.topFive);
     })
-
   }
 
 }
