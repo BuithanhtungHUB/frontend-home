@@ -140,10 +140,20 @@
                 <li><a class="dropdown-item" (click)="logout()">Đăng xuất</a></li>
               </ul>
             </div>
-            <div *ngIf="!user" class="col-md-3 text-end">
-              <a routerLink="/login" type="button" class="btn btn-outline-primary me-2">Đăng nhập</a>
-              <a routerLink="/register" type="button" class="btn btn-outline-primary me-2">Đăng ký</a>
+            <div *ngIf="!user" class="dropdown text-end">
+              <a style="font-size: 18px" href="#" class="d-block link-dark text-decoration-none dropdown-toggle"
+                 id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="assets/img/bg-img/avatar-default.jpg" alt="mdo" width="55" height="55" class="rounded-circle">
+              </a>
+              <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
+                <li><a class="dropdown-item" routerLink="/login">Đăng nhập</a></li>
+                <li><a class="dropdown-item" routerLink="/register">Đăng ký</a></li>
+              </ul>
             </div>
+<!--            <div *ngIf="!user" class="col-md-3 text-end">-->
+<!--              <a routerLink="/login" type="button" class="btn btn-outline-primary me-2">Đăng nhập</a>-->
+<!--              <a routerLink="/register" type="button" class="btn btn-outline-primary me-2">Đăng ký</a>-->
+<!--            </div>-->
           </div>
         </div>
       </header>
