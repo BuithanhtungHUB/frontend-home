@@ -30,7 +30,7 @@ export class ChangePasswordComponent implements OnInit {
   submit() {
     if (!this.messageConfirm) {
       let data = this.formChangePassword?.value;
-      console.log(data);
+      // console.log(data);
       this.userService.changePassword(data).subscribe(respone => {
         this.authService.logout().subscribe(res => {
           localStorage.clear();
@@ -42,7 +42,7 @@ export class ChangePasswordComponent implements OnInit {
           })
         })
       }, errors => {
-        console.log(errors);
+        // console.log(errors);
         this.messageErrLogin = errors.error.message;
       })
     }

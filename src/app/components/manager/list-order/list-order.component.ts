@@ -17,7 +17,7 @@ export class ListOrderComponent implements OnInit {
   getListOrder() {
     this.managerService.getListOrderManager().subscribe(res => {
       this.orders = res.orders_manager;
-      console.log(this.orders)
+      // console.log(this.orders);
     })
   }
 
@@ -26,7 +26,7 @@ export class ListOrderComponent implements OnInit {
       this.managerService.confirmOrder(id,'xác nhận').subscribe(res => {
         this.getListOrder();
         alert('Bạn đã xác nhận');
-        console.log(res)
+        // console.log(res);
         location.reload();
       })
     }

@@ -30,13 +30,13 @@ export class UpdateProfileComponent implements OnInit {
             if (url) {
               this.imgUrl = url;
             }
-            console.log(this.imgUrl);
+            // console.log(this.imgUrl);
           });
         })
       )
       .subscribe(url => {
         if (url) {
-          console.log(url);
+          // console.log(url);
         }
       });
   }
@@ -52,7 +52,7 @@ export class UpdateProfileComponent implements OnInit {
 
   ngOnInit(): void {
     let userLogin = JSON.parse(<string>this.authService.getUser());
-    console.log(userLogin);
+    // console.log(userLogin);
     this.formUpdateProfile = this.fb.group({
       avatar: [userLogin.avatar],
       user_name: [userLogin.user_name],

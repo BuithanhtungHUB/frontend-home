@@ -29,13 +29,13 @@ export class CreateHouseComponent implements OnInit {
           if (url) {
             this.imgUrl = url;
           }
-          console.log(this.imgUrl);
+          // console.log(this.imgUrl);
         });
       })
     )
       .subscribe(url => {
         if (url) {
-          console.log(url);
+          // console.log(url);
         }
       });
   }
@@ -70,14 +70,14 @@ export class CreateHouseComponent implements OnInit {
       this.formCreateHouse?.value.image = this.imgUrl;
     }
     let data = this.formCreateHouse?.value;
-    console.log(data);
+    // console.log(data);
     this.managerService.createHouse(data).subscribe(res => {
       this.router.navigate(['manager/list-house']).then(r => {
         alert('Thêm thành công')
       })
     },
       error => {
-      console.log(error);
+      // console.log(error);
       })
   }
 

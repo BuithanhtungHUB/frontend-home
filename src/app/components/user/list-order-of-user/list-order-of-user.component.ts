@@ -26,7 +26,7 @@ export class ListOrderOfUserComponent implements OnInit {
     this.userService.getRentHistotry().subscribe(res => {
       this.orders = res.order;
       this.status = res.order.status;
-      console.log(this.orders)
+      // console.log(this.orders);
     })
   }
 

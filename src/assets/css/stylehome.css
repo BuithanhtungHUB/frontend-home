@@ -561,7 +561,7 @@ input:focus {
         color: #1cc3b2; }
 
 .classy-nav-container {
-  background-color: transparent;
+  background-color: #FFF8E5;
   padding: 0; }
   .classy-nav-container .classy-navbar {
     -webkit-transition-duration: 500ms;
