@@ -114,7 +114,7 @@
       <!-- Single Post Area -->
       <div *ngFor="let house of houses" class="col-12 col-md-6 col-lg-3">
         <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-          <a routerLink="/{{house.id}}/detail" class="post-thumbnail"><img [src]="house.images[0].url" alt=""></a>
+          <a routerLink="/{{house.id}}/detail" class="post-thumbnail"><img *ngIf="house.images[0] !== undefined" [src]="house.images[0].url" alt=""></a>
           <!-- Post Meta -->
           <div class="post-meta">
             <p  class="post-date">{{houses.category}}</p>

@@ -15,12 +15,12 @@ export class HouseListComponent implements OnInit {
   ngOnInit(): void {
     this.houseService.getHouseList().subscribe(res => {
       this.houses = res;
-      console.log(this.houses);
+      // console.log(this.houses);
     });
     this.houseService.getTopFive().subscribe(res => {
       this.topFive = res;
       this.count = this.topFive.length;
-      console.log(this.topFive);
+      // console.log(this.topFive);
     })
   }
 

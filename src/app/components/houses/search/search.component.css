@@ -17,6 +17,9 @@ color: #1abc9c;
   border-radius: 25px;
   height: 348px;
 }
+.card-body{
+  padding: 0.5rem;
+}
 .card-text {
  color: #0b0b0b;
 }
