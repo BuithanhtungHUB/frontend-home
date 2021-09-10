@@ -1,7 +1,8 @@
-<div class="container col-7">
+<br><br>
+<div class="container col-10">
   <form *ngIf="formCreateHouse" [formGroup]="formCreateHouse" (ngSubmit)="submit()">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-4">
         <div class="form-group">
           <label>Tên căn nhà</label>
           <input type="text" class="form-control col-6" placeholder="Nhập vào tên căn nhà" formControlName="name" [ngClass]="(name?.invalid && (name?.dirty || name?.touched)) ? 'is-invalid' : ''">
@@ -69,7 +70,7 @@
         </div>
         <div class="form-group">
           <label>Giá tiền theo ngày</label>
-          <input type="number" class="form-control col-5" placeholder="Nhập vào giá tiền theo ngày" formControlName="price" [ngClass]="(price?.invalid && (price?.dirty || price?.touched)) ? 'is-invalid' : ''">
+          <input type="number" class="form-control col-6" placeholder="Nhập vào giá tiền theo ngày" formControlName="price" [ngClass]="(price?.invalid && (price?.dirty || price?.touched)) ? 'is-invalid' : ''">
         </div>
         <div *ngIf="price?.invalid && (price?.dirty || price?.touched)">
           <p *ngIf="price?.errors?.required" class="text-danger">
@@ -77,21 +78,27 @@
           </p>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img width="300px" [src]="imgUrl"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
-        <div class="form-group col-12">
-          <input class="form-control-file" type="file"
-                 id="file"
-                 #userPhoto
-                 (change)="onFileSelected(userPhoto.files)"
-                 name="image"
-                 autocomplete="off"
-          />
+      <div class="col-md-8">
+        <p>Chọn ảnh nhà:</p>
+        <div class="container">
+          <div class="custom-dropzone" ngx-dropzone [accept]="'image/jpeg,image/jpg,image/png'" (change)="onSelect($event)">
+            <ngx-dropzone-label>
+              <div>
+                <h2>(Tối đa 5 ảnh .jpeg .jpg .png)</h2>
+              </div>
+            </ngx-dropzone-label>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+              <ngx-dropzone-label><!--{{ f.name }} ({{ f.type }})--></ngx-dropzone-label>
+            </ngx-dropzone-image-preview>
+          </div>
         </div>
       </div>
     </div>
 
-    <button class="btn btn-primary">Đăng nhà</button>
+    <button class="btn btn-primary" [disabled]="statusSubmit">Đăng nhà</button>
+    <p *ngIf="statusSubmit == true" class="text-danger">(Đang xử lý ảnh)</p>
   </form>
 </div>
 <br>
+
+
