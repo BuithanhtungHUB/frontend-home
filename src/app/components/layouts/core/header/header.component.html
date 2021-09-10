@@ -18,6 +18,7 @@
           <div class="top-header-content">
             <a href="#"><i class="icon_phone"></i> <span>024 6253 8829</span></a>
             <a href="#"><i class="icon_mail"></i> <span>homefromhomeb@gmail.com</span></a>
+<!--            <a href="#"><i class="icon_mail"></i> <span>{{dateNow| date}}</span></a>-->
           </div>
         </div>
 
@@ -51,37 +52,62 @@
                 <div class="hotel-search-form">
                   <form *ngIf="formSearch" [formGroup]="formSearch" (ngSubmit)="submit()">
                     <div class="row">
-                      <div class="row col-md-8 align-items-end">
-                        <div class="col-3 col-md-8 col-lg-3 ">
-                          <label for="checkIn" class="col-form-label">Nhận phòng</label>
-                          <input type="date" class="form-control" id="checkIn" name="checkin-date">
+                      <div class="row col-md-6 align-items-end">
+                        <div class="col-3 col-md-6 col-lg-4 ">
+                          <label for="star_date" class="col-form-label">Nhận phòng</label>
+                          <input (input)="checkStartDate()" type="date" class="form-control" id="star_date" name="checkin-date"
+                                 formControlName="start_date">
                         </div>
-                        <div class="col-3 col-md-8 col-lg-3 ">
-                          <label for="checkOut">Trả phòng</label>
-                          <input type="date" class="form-control" id="checkOut" name="checkout-date">
+                        <div class="col-3 col-md-6 col-lg-4 ">
+                          <label for="end_date">Trả phòng</label>
+                          <input (input)="checkStartDate()" type="date" class="form-control" id="end_date" name="checkout-date"
+                                 formControlName="end_date">
                         </div>
-                        <div class="col-3 col-md-8 col-lg-3 ">
-                          <label for="2">Địa điểm</label>
-                          <input type="text" class="form-control" id="2">
+                        <div class="col-3 col-md-6 col-lg-4 ">
+                          <label for="address">Địa điểm</label>
+                          <input type="text" class="form-control" id="address" formControlName="address">
                         </div>
-                        <div class="col-3 col-md-8 col-lg-3 ">
-                          <label for="children">Giá (VNĐ)</label>
-                          <select name="children" id="children" class="form-control">
-                            <option value="10000">100.000</option>
-                            <option value="20000">200.000</option>
-                            <option value="30000">300.000</option>
-                            <option value="40000">400.000</option>
-                            <option value="50000">500.000</option>
-                            <option value="100000">1.000.000</option>
-                            <option value="20000">2.000.000</option>
+                      </div>
+                      <div class="row col-md-3 align-items-end">
+                        <div class="col-3 col-md-3 col-lg-6 ">
+                          <label for="priMin">$ thấp nhất (VNĐ)</label>
+                          <select name="priMin" id="priMin" class="form-control" formControlName="priMin">
+                            <option value="100000">100.000</option>
+                            <option value="200000">200.000</option>
+                            <option value="300000">300.000</option>
+                            <option value="400000">400.000</option>
+                            <option value="500000">500.000</option>
+                            <option value="600000">600.000</option>
+                            <option value="700000">700.000</option>
+                            <option value="800000">800.000</option>
+                            <option value="900000">900.000</option>
+                            <option value="1000000">1.000.000</option>
+                            <option value="1500000">1.500.000</option>
+                            <option value="2000000">2.000.000</option>
+                          </select>
+                        </div>
+                        <div class="col-3 col-md-3 col-lg-6 ">
+                          <label for="priMax">$ cao nhất (VNĐ)</label>
+                          <select name="priMax" id="priMax" class="form-control" formControlName="priMax">
+                            <option value="100000">100.000</option>
+                            <option value="200000">200.000</option>
+                            <option value="300000">300.000</option>
+                            <option value="400000">400.000</option>
+                            <option value="500000">500.000</option>
+                            <option value="600000">600.000</option>
+                            <option value="700000">700.000</option>
+                            <option value="800000">800.000</option>
+                            <option value="900000">900.000</option>
+                            <option value="1000000">1.000.000</option>
+                            <option value="1500000">1.500.000</option>
+                            <option value="2000000">2.000.000</option>
                           </select>
                         </div>
                       </div>
-                      <div class="row col-md-4 align-items-end">
-                        <div class="col-6 col-md-4 col-lg-6">
-                          <label for="room">Phòng ngủ</label>
-                          <select name="room" id="room" class="form-control">
-
+                      <div class="row col-md-3 align-items-end">
+                        <div class="col-6 col-md-2 col-lg-6">
+                          <label for="bedroom">Phòng ngủ</label>
+                          <select name="bedroom" id="bedroom" class="form-control" formControlName="bedroom">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -94,14 +120,15 @@
                             <option value="10">10</option>
                           </select>
                         </div>
-                        <div class="col-6 col-md-4 col-lg-6">
-                          <label for="adults">Phòng tắm</label>
-                          <select name="adults" id="adults" class="form-control">
-
+                        <div class="col-6 col-md-2 col-lg-6">
+                          <label for="bathroom">Phòng tắm</label>
+                          <select name="bathroom" id="bathroom" class="form-control" formControlName="bathroom">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
-
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
                           </select>
                         </div>
                       </div>
@@ -150,10 +177,6 @@
                 <li><a class="dropdown-item" routerLink="/register">Đăng ký</a></li>
               </ul>
             </div>
-<!--            <div *ngIf="!user" class="col-md-3 text-end">-->
-<!--              <a routerLink="/login" type="button" class="btn btn-outline-primary me-2">Đăng nhập</a>-->
-<!--              <a routerLink="/register" type="button" class="btn btn-outline-primary me-2">Đăng ký</a>-->
-<!--            </div>-->
           </div>
         </div>
       </header>
