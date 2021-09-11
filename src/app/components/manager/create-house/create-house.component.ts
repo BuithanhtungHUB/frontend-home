@@ -58,6 +58,7 @@ export class CreateHouseComponent implements OnInit {
       })
     },
       error => {
+      this.router.navigate(['manager/list-house'], )
       // console.log(error);
       })
   }
@@ -83,37 +84,46 @@ export class CreateHouseComponent implements OnInit {
 
   onSelect(event: any) {
     this.files.push(...event.addedFiles);
+    let rejectedFiles: File[] = [];
+    rejectedFiles.push(...event.rejectedFiles);
+    if (rejectedFiles.length > 0) {
+      alert('Có file tải lên không phải định dạng ảnh!')
+    }
+    // console.log(rejectedFiles);
+    // console.log(this.files);
     let imgUrlLengthOld = this.imgUrls.length;
     if (this.files.length <= 5) {
-      this.statusSubmit = true;
-      // console.log(imgUrlLengthOld);
-      for (let i = 0; i < this.files.length - imgUrlLengthOld; i++) {
-        setTimeout( () => {
-          var n = Date.now();
-          const file = this.files[i + imgUrlLengthOld];
-          const filePath = `RoomsImages/${n}`;
-          const fileRef = this.storage.ref(filePath);
-          const task = this.storage.upload(`RoomsImages/${n}`, file);
-          task.snapshotChanges().pipe(
-            finalize(() => {
-              this.downloadURL = fileRef.getDownloadURL();
-              this.downloadURL.subscribe(url => {
+      if (this.files.length > imgUrlLengthOld) {
+        this.statusSubmit = true;
+        // console.log(imgUrlLengthOld);
+        for (let i = 0; i < this.files.length - imgUrlLengthOld; i++) {
+          setTimeout( () => {
+            var n = Date.now();
+            const file = this.files[i + imgUrlLengthOld];
+            const filePath = `RoomsImages/${n}`;
+            const fileRef = this.storage.ref(filePath);
+            const task = this.storage.upload(`RoomsImages/${n}`, file);
+            task.snapshotChanges().pipe(
+              finalize(() => {
+                this.downloadURL = fileRef.getDownloadURL();
+                this.downloadURL.subscribe(url => {
+                  if (url) {
+                    this.imgUrls[i + imgUrlLengthOld] = url;
+                  }
+                  // console.log(this.imgUrls);
+                  if (this.imgUrls.length == this.files.length) {
+                    this.statusSubmit = false;
+                  }
+                });
+              })
+            )
+              .subscribe(url => {
                 if (url) {
-                  this.imgUrls[i + imgUrlLengthOld] = url;
-                }
-                // console.log(this.imgUrls);
-                if (this.imgUrls.length == this.files.length) {
-                  this.statusSubmit = false;
+                  // console.log(url);
                 }
               });
-            })
-          )
-            .subscribe(url => {
-              if (url) {
-                // console.log(url);
-              }
-            });
-        }, 1)
+          }, 1)
+        }
       }
     }
     else {

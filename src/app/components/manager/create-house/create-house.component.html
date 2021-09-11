@@ -80,6 +80,7 @@
       </div>
       <div class="col-md-8">
         <p>Chọn ảnh nhà:</p>
+        <p *ngIf="statusSubmit == true" class="text-danger">(Đang xử lý ảnh)</p>
         <div class="container">
           <div class="custom-dropzone" ngx-dropzone [accept]="'image/jpeg,image/jpg,image/png'" (change)="onSelect($event)">
             <ngx-dropzone-label>
@@ -96,7 +97,6 @@
     </div>
 
     <button class="btn btn-primary" [disabled]="statusSubmit">Đăng nhà</button>
-    <p *ngIf="statusSubmit == true" class="text-danger">(Đang xử lý ảnh)</p>
   </form>
 </div>
 <br>
