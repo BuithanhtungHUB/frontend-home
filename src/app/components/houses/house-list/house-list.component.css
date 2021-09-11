@@ -3,6 +3,17 @@
   border-radius: 15px;
 }
 .card {
-  margin-top: 5%;
   border: none;
+}
+.w-100{
+  border-radius: 15px;
+  margin-top: 15px
+}
+.img-list{
+  height: 230px;
+  width: 350px;
+  border-radius: 15px;
+}
+.fa-dollar-sign:before {
+  color: gold;
 }

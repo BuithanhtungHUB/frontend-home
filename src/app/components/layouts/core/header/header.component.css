@@ -38,9 +38,13 @@
 
 .button-circle {
   color: #ffffff;
-  background-color: #f11717;
+  background-color: #17f1d8;
 }
 
 header {
-  background-color: rgba(255, 255, 255, 0.35);
+  background-color: rgb(255, 255, 255);
+}
+.w-100 {
+  width: 100% !important;
+  margin-top: 15px;
 }
