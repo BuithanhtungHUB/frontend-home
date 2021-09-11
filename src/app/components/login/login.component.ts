@@ -32,13 +32,14 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('userLogin', JSON.stringify(respone.user));
       this.router.navigate(['']).then(respone => {
         this.messageSuccess = 'Đăng nhập thành công';
+        alert('Đăng nhập thành công');
         location.reload();
       })
     }, errors => {
       this.messageUser = JSON.stringify(errors.error.user_name);
       this.messagePassword = JSON.stringify(errors.error.password);
       this.messageError = JSON.stringify(errors.error.error);
-      console.log(this.messageError,this.messagePassword, this.messageUser)
+      // console.log(this.messageError,this.messagePassword, this.messageUser)
     })
   }
 

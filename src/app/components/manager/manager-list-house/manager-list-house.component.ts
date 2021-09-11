@@ -13,7 +13,7 @@ export class ManagerListHouseComponent implements OnInit {
 
   ngOnInit(): void {
     this.managerService.getHousesManager().subscribe(res => {
-      console.log(res);
+      // console.log(res);
       this.houses = res.houses;
     })
   }
