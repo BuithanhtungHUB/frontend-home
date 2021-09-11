@@ -2,19 +2,7 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="/assets/img/bg-img/trip.jpg" style="height: 700px" class="d-block w-100 " alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="/assets/img/bg-img/paradise6.jpg" style="height: 700px" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="/assets/img/bg-img/slider_3.png" style="height: 700px" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="/assets/img/bg-img/penthouse.png" style="height: 700px" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="/assets/img/bg-img/9.jpg" style="height: 700px" class="d-block w-100" alt="...">
+      <img src="/assets/img/bg-img/slider_3.png" class="d-block w-100 " alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -41,20 +29,34 @@
 
   <div class="row">
     <!-- Single Post Area -->
-    <div class="col-12 col-md-6 col-lg-4" *ngFor="let top of topFive">
-      <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-        <a href="#" class="post-thumbnail"><img src="{{top.images.url}}" alt=""></a>
-        <!-- Post Meta -->
-        <div class="post-meta">
-          <a href="#" class="post-date">{{top.house.bedroom}} phòng ngủ - {{top.house.bathroom}} phòng tắm</a>
-          <a href="#" class="post-catagory">{{top.house.address}}</a>
-        </div>
-        <!-- Post Title -->
-        <a routerLink="/{{top.house.id}}/detail" class="post-title">{{top.house.name}}</a>
-<!--        <p>{{top.house.description}}</p>-->
+    <div class="card col-12 col-md-1 col-lg-1">
+    </div>
+    <div class="card col-12 col-md-2 col-lg-2" *ngFor="let top of topFive">
+      <img src="{{top.images.url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="post-date">{{top.house.bedroom}} phòng ngủ - {{top.house.bathroom}} phòng tắm</p>
         <p><i class="fas fa-dollar-sign"></i> {{top.house.price}}đ/ngày</p>
+        <h5 class="card-title"><a routerLink="/{{top.house.id}}/detail" class="post-title">{{top.house.name}}</a></h5>
+        <p class="card-text">{{top.house.address}}</p>
+
       </div>
     </div>
+    <div class="card col-12 col-md-1 col-lg-1">
+    </div>
+    <!--    <div class="col-12 col-md-2 col-lg-2" *ngFor="let top of topFive">-->
+    <!--      <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">-->
+    <!--        <a href="#" class="post-thumbnail"><img src="{{top.images.url}}" alt=""></a>-->
+    <!--        &lt;!&ndash; Post Meta &ndash;&gt;-->
+    <!--        <div class="post-meta">-->
+    <!--          <a href="#" class="post-date">{{top.house.bedroom}} phòng ngủ - {{top.house.bathroom}} phòng tắm</a>-->
+    <!--          <a href="#" class="post-catagory">{{top.house.address}}</a>-->
+    <!--        </div>-->
+    <!--        &lt;!&ndash; Post Title &ndash;&gt;-->
+    <!--        <a routerLink="/{{top.house.id}}/detail" class="post-title">{{top.house.name}}</a>-->
+    <!--&lt;!&ndash;        <p>{{top.house.description}}</p>&ndash;&gt;-->
+    <!--        <p><i class="fas fa-dollar-sign"></i> {{top.house.price}}đ/ngày</p>-->
+    <!--      </div>-->
+    <!--    </div>-->
 
   </div>
 </div>
@@ -73,7 +75,7 @@
           <h5 class="wow fadeInUp" data-wow-delay="300ms">Trước khi đặt phòng, hãy kiểm tra những địa điểm bị hạn chế du
             lịch trong thời gian này. Sức khỏe và sự an toàn của cộng đồng luôn được đặt hàng đầu. Vì vậy, vui lòng làm
             theo chỉ thị của chính phủ bởi điều đó thực sự cần thiết.</h5>
-          <p class="wow fadeInUp" data-wow-delay="400ms"> <span>Chúc bạn có những trải nghiệm tuyệt vời nhất cùng với HFH!</span>
+          <p class="wow fadeInUp" data-wow-delay="400ms"><span>Chúc bạn có những trải nghiệm tuyệt vời nhất cùng với HFH!</span>
           </p>
         </div>
       </div>
@@ -114,10 +116,11 @@
       <!-- Single Post Area -->
       <div *ngFor="let house of houses" class="col-12 col-md-6 col-lg-3">
         <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-          <a routerLink="/{{house.id}}/detail" class="post-thumbnail"><img [src]="house.images[0].url" alt=""></a>
+          <a routerLink="/{{house.id}}/detail" class="post-thumbnail"><img *ngIf="house.images[0] !== undefined"
+                                                                           [src]="house.images[0].url" alt=""></a>
           <!-- Post Meta -->
           <div class="post-meta">
-            <p  class="post-date">{{houses.category}}</p>
+            <p class="post-date">{{houses.category}}</p>
             <p class="post-catagory">{{house.bedroom}} phòng ngủ & {{house.bathroom}} phòng tắm</p>
           </div>
           <!-- Post Title -->
@@ -126,7 +129,6 @@
           <p><i class="fas fa-dollar-sign"></i> {{house.price}}đ/đêm</p>
         </div>
       </div>
-
 
 
     </div>
