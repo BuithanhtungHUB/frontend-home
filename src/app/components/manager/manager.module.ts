@@ -9,6 +9,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../../../environments/environment";
+import {NgxDropzoneModule} from "ngx-dropzone";
 
 const routes : Routes = [
   {
@@ -37,7 +38,8 @@ const routes : Routes = [
         ReactiveFormsModule,
         HttpClientModule,
         AngularFireStorageModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
+        AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+        NgxDropzoneModule
     ]
 })
 export class ManagerModule { }
