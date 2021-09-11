@@ -30,7 +30,7 @@ export class CreateHouseComponent implements OnInit {
       bathroom: ['1'],
       description: ['', [Validators.required]],
       price: ['', [Validators.required]],
-      image: [[]],
+      images: [[]],
       user_id: [JSON.parse(<string>localStorage.getItem('userLogin')).id],
       status: ['còn trống'],
     })
@@ -39,17 +39,17 @@ export class CreateHouseComponent implements OnInit {
   submit() {
     if (this.imgUrls.length == 0) {
       // @ts-ignore
-      this.formCreateHouse?.value.image[0] = 'https://firebasestorage.googleapis.com/v0/b/home-from-home-93499.appspot.com/o/RoomsImages%2Fdefault--image-house.jpeg?alt=media&token=5b157fe2-a513-46ff-8055-4315b54afda9';
+      this.formCreateHouse?.value.images[0] = 'https://firebasestorage.googleapis.com/v0/b/home-from-home-93499.appspot.com/o/RoomsImages%2Fdefault--image-house.jpeg?alt=media&token=5b157fe2-a513-46ff-8055-4315b54afda9';
     }
     else {
       // @ts-ignore
-      this.formCreateHouse?.value.image = [];
+      this.formCreateHouse?.value.images = [];
       for (let i = 0; i < this.imgUrls.length; i++) {
         // @ts-ignore
-        this.formCreateHouse?.value.image[i] = this.imgUrls[i];
+        this.formCreateHouse?.value.images[i] = this.imgUrls[i];
       }
     }
-    console.log(this.formCreateHouse?.value.image);
+    console.log(this.formCreateHouse?.value.images);
     let data = this.formCreateHouse?.value;
     // console.log(data);
     this.managerService.createHouse(data).subscribe(res => {
