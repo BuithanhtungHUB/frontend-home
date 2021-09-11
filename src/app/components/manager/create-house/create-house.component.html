@@ -34,6 +34,15 @@
           </p>
         </div>
         <div class="form-group">
+          <label>Url google map</label>
+          <input type="text" class="form-control col-8" placeholder="Nhập vào url" formControlName="url_map" [ngClass]="(url_map?.invalid && (url_map?.dirty || url_map?.touched)) ? 'is-invalid' : ''">
+        </div>
+        <div *ngIf="url_map?.invalid && (url_map?.dirty || url_map?.touched)">
+          <p *ngIf="url_map?.errors?.required" class="text-danger">
+            Không được để trống url google map
+          </p>
+        </div>
+        <div class="form-group">
           <label>Số lượng phòng ngủ</label>
           <br>
           <select class="form-select col-2" formControlName="bedroom">
