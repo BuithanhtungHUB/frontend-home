@@ -675,6 +675,7 @@ you can use the generic selector below, but it's slower:
 	content: "\e075";
 }
 .icon_mail:before {
+  color: #FFFFFF;
 	content: "\e076";
 }
 .icon_cone:before {
@@ -753,6 +754,7 @@ you can use the generic selector below, but it's slower:
 	content: "\e08f";
 }
 .icon_phone:before {
+  color: #FFFFFF;
 	content: "\e090";
 }
 .icon_upload:before {
@@ -1156,4 +1158,4 @@ text-shadow: none;
 		font-size: 2em;
 	}
 
-	
+
