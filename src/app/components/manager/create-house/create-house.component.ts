@@ -33,6 +33,7 @@ export class CreateHouseComponent implements OnInit {
       images: [[]],
       user_id: [JSON.parse(<string>localStorage.getItem('userLogin')).id],
       status: ['còn trống'],
+      url_map: ['', Validators.required]
     })
   }
 
@@ -58,8 +59,7 @@ export class CreateHouseComponent implements OnInit {
       })
     },
       error => {
-      this.router.navigate(['manager/list-house'], )
-      // console.log(error);
+      alert('Điền thiếu trường')
       })
   }
 
@@ -77,6 +77,10 @@ export class CreateHouseComponent implements OnInit {
 
   get price() {
     return this.formCreateHouse?.get('price');
+  }
+
+  get url_map() {
+    return this.formCreateHouse?.get('url_map');
   }
 
   files: File[] = [];
