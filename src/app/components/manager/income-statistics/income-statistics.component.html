@@ -1,0 +1,30 @@
+<div class="container" style="height: 1000px; width: 1000px">
+  <h2 class="text-center">Thống kê thu nhập</h2>
+  <div style="display: block;">
+    <canvas baseChart width="300" height="200"
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [plugins]="barChartPlugins"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            [colors]="color">
+    </canvas>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-sm">
+      <label>Chọn nhà:</label>
+      <select #house class="form-select col-3" (change)="sendData(house, year)">
+        <option *ngFor="let house of house_list" value="{{house.id}}">{{house.name}}</option>
+      </select>
+    </div>
+    <div class="col-sm">
+      <label>Chọn năm:</label>
+      <select #year class="form-select col-3" (change)="sendData(house, year)">
+        <option *ngFor="let year of years" value="{{year}}" [selected]="year == currentYear">{{year}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+

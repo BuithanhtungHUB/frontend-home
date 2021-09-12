@@ -28,6 +28,7 @@ export class RentHouseComponent implements OnInit {
 
   submit() {
     let data = this.formRentHouse?.value;
+    console.log(data);
     this.houseService.bookHouse(data, this.id).subscribe(res => {
       alert('Đặt phòng thành công');
     })
