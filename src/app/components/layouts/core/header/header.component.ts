@@ -5,6 +5,7 @@ import {UserService} from "../../../../services/user.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {HouseService} from "../../../../services/house.service";
 import {formatDate} from "@angular/common";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-header',
@@ -23,8 +24,8 @@ export class HeaderComponent implements OnInit, DoCheck {
   constructor(private authService: AuthService,
               private router: Router,
               private fb: FormBuilder,
-              private houseService: HouseService) {
-  }
+              private houseService: HouseService,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(<string>this.authService.getUser());
@@ -49,9 +50,9 @@ export class HeaderComponent implements OnInit, DoCheck {
       localStorage.clear();
       this.router.navigate(['']).then(r => {
         location.reload();
-        console.log('logout success')
+        this.toastr.success('Đăng xuất thành công')
       }).catch(error => {
-        console.log('logout error')
+        this.toastr.success('Đăng xuất lỗi')
       })
     })
   }

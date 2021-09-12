@@ -86,9 +86,9 @@ li {
 
 p {
   line-height: 1.7;
-  color: #636a76;
+  color: #000000;
   font-size: 16px;
-  font-weight: 400; }
+  font-weight: 500; }
 
 img {
   max-width: 100%;
@@ -357,13 +357,14 @@ input:focus {
   margin-bottom: 50px; }
   .section-heading h6 {
     text-transform: uppercase;
-    color: #1cc3b2;
+    color: #f58259;
     letter-spacing: 2px;
     display: block;
     margin-bottom: 10px; }
   .section-heading h2 {
     font-size: 42px;
     text-transform: capitalize;
+    color: #282882;
     margin-bottom: 0;
     display: block;
     line-height: 1.2; }
@@ -1284,7 +1285,7 @@ input:focus {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
-    max-width: 50%;
+    max-width: 30%;
     width: 50%; }
     @media only screen and (max-width: 767px) {
       .single-room-area .room-thumbnail {
@@ -2133,6 +2134,7 @@ html .ui-button.ui-state-disabled:active {
     .single-post-area .post-title:hover, .single-post-area .post-title:focus {
       color: #1cc3b2; }
   .single-post-area p {
+    color: #0b0b0b;
     margin-bottom: 15px; }
   .single-post-area:hover, .single-post-area:focus {
     -webkit-transform: translateY(-10px);
