@@ -6,14 +6,14 @@
   box-shadow: 0 2px 10px 1px rgba(2, 2, 2, 0.22);
   padding: 0px 20px 0 20px;
   border-radius: 5px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.21);
 
 }
 
 .hotel-search-form-area .hotel-search-form {
-  background-color: rgba(19, 211, 239, 0.24);
-  color: rgb(0, 0, 0);
-  border-radius: 20px;
+  background-color: rgb(40, 40, 130);
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
 }
 
 .hotel-search-form-area .hotel-search-form .form-control {
@@ -21,14 +21,15 @@
   height: 35px;
   border-radius: 20px;
   font-weight: bold;
+  width: 105%;
 
 }
 
 .hotel-search-form-area {
   position: relative;
   z-index: 1;
-  padding-left: 12%;
-  padding-right: 22%;
+  padding-left: 5%;
+  padding-right: 10%;
 }
 
 .hotel-search-form-area .hotel-search-form label {
@@ -38,7 +39,7 @@
 
 .button-circle {
   color: #ffffff;
-  background-color: #17f1d8;
+  background-color: #f58259;
 }
 
 header {
@@ -47,4 +48,13 @@ header {
 .w-100 {
   width: 100% !important;
   margin-top: 15px;
+}
+.classy-nav-container a {
+  color: #000000;
+}
+.btn-home {
+  color: #ffffff;
+}
+.top-header-area {
+  background-color: #282882;
 }
