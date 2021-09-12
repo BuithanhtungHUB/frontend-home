@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
@@ -16,13 +17,18 @@ export class LoginComponent implements OnInit {
   messageSuccess: any;
   constructor(private authService: AuthService,
               private fb: FormBuilder,
-              private router: Router) { }
+              private router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.formLogin = this.fb.group({
       user_name: ['',[Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6),Validators.maxLength(8)]]
     })
+  }
+
+  showSuccess(){
+    this.toastr.success('Đăng nhập thành công');
   }
 
   submit() {
@@ -32,8 +38,8 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('userLogin', JSON.stringify(respone.user));
       this.router.navigate(['']).then(respone => {
         this.messageSuccess = 'Đăng nhập thành công';
-        alert('Đăng nhập thành công');
         location.reload();
+        this.showSuccess();
       })
     }, errors => {
       this.messageUser = JSON.stringify(errors.error.user_name);
@@ -42,6 +48,7 @@ export class LoginComponent implements OnInit {
       // console.log(this.messageError,this.messagePassword, this.messageUser)
     })
   }
+
 
   get user_name() {
     return this.formLogin?.get('user_name');
