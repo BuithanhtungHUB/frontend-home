@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {HouseService} from "../../../services/house.service";
+import {ToastrService} from "ngx-toastr";
+
 
 @Component({
   selector: 'app-rent-house',
@@ -17,7 +19,8 @@ export class RentHouseComponent implements OnInit {
   statusSubmit = false;
   formRentHouse: FormGroup | undefined;
   constructor(private fb: FormBuilder,
-              private houseService: HouseService) { }
+              private houseService: HouseService,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.formRentHouse = this.fb.group({
@@ -29,8 +32,11 @@ export class RentHouseComponent implements OnInit {
   submit() {
     let data = this.formRentHouse?.value;
     this.houseService.bookHouse(data, this.id).subscribe(res => {
-      alert('Đặt phòng thành công');
+      this.toastr.success('Đặt phòng thành công');
+    }, errors => {
+      this.toastr.warning(errors. message);
     })
+
   }
 
   get start_date() {
@@ -51,7 +57,7 @@ export class RentHouseComponent implements OnInit {
     else if (this.formRentHouse?.value.start_date !== '' && this.formRentHouse?.value.end_date !== '' && days <= 0) {
       this.totalPrice = 0;
       this.statusSubmit = true;
-      alert('Ngày trả phòng phải đến sau ngày nhận phòng');
+      this.toastr.warning('Ngày trả phòng phải đến sau ngày nhận phòng')
     }
   }
 }

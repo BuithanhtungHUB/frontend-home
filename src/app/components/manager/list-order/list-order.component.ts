@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ManagerService} from "../../../services/manager.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-list-order',
@@ -8,7 +9,8 @@ import {ManagerService} from "../../../services/manager.service";
 })
 export class ListOrderComponent implements OnInit {
   orders: any;
-  constructor(private managerService: ManagerService) { }
+  constructor(private managerService: ManagerService,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getListOrder();
@@ -17,7 +19,6 @@ export class ListOrderComponent implements OnInit {
   getListOrder() {
     this.managerService.getListOrderManager().subscribe(res => {
       this.orders = res.orders_manager;
-      // console.log(this.orders);
     })
   }
 
@@ -25,20 +26,18 @@ export class ListOrderComponent implements OnInit {
     if (confirm('Bạn muốn xác nhận đơn này?')) {
       this.managerService.confirmOrder(id,'xác nhận').subscribe(res => {
         this.getListOrder();
-        alert('Bạn đã xác nhận');
-        // console.log(res);
+        this.toastr.success('Bạn đã xác nhận');
         location.reload();
       })
     }
   }
 
   deniedOrder(id :number) {
-    // let data = 'không xác nhận'
     if (confirm('Bạn không muốn xác nhận đơn này?')) {
       this.managerService.confirmOrder(id,'không xác nhận').subscribe(res => {
         this.getListOrder();
-        alert('Bạn đã không xác nhận');
         location.reload();
+        this.toastr.warning('Bạn đã không xác nhận');
       })
     }
   }

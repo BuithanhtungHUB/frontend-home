@@ -3,6 +3,7 @@ import {HouseService} from "../../../services/house.service";
 import {ActivatedRoute} from "@angular/router";
 import {DomSanitizer} from "@angular/platform-browser";
 import {FormGroup} from "@angular/forms";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-house-detail',
@@ -17,7 +18,8 @@ export class HouseDetailComponent implements OnInit {
   orders: any;
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute,
-              public sanitizer: DomSanitizer) { }
+              public sanitizer: DomSanitizer,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -38,7 +40,7 @@ export class HouseDetailComponent implements OnInit {
     };
     this.houseService.updateStatusHouse(data, this.id).subscribe(res => {
       console.log(res);
-      alert(res.success);
+      this.toastr.success(res.success)
     })
   }
 
@@ -50,16 +52,16 @@ export class HouseDetailComponent implements OnInit {
   confirmOrder(id:any) {
     let data = 'xác nhận';
     this.houseService.confirmOrder(data, id).subscribe(res =>{
-      alert(res.success);
       location.reload();
+      this.toastr.success('Bạn đã xác nhận');
     })
   }
 
   refuseOrder(id: any) {
     let data = "không xác nhận";
     this.houseService.confirmOrder( data,id).subscribe(res => {
-      alert(res.success);
       location.reload();
+      this.toastr.warning('Bạn đã không xác nhận');
     })
   }
 }

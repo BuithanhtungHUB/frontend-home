@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-register',
@@ -21,7 +22,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -35,13 +37,16 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  showSuccess(){
+    this.toastr.success('Đăng Ký thành công');
+  }
+
   submit() {
     let data = this.formRegister?.value;
-
     this.authService.register(data).subscribe(respone => {
       this.router.navigate(['/login']).then(respone => {
         this.messageSuccess = 'Đăng ký thành công';
-        alert('Đăng ký thành công');
+        this.showSuccess();
         // console.log(this.messageSuccess);
       })
     }, errors => {
