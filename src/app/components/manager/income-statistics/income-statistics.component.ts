@@ -12,6 +12,8 @@ export class IncomeStatisticsComponent implements OnInit {
   public house_list: any
   public years: Array<any> = [];
   public currentYear: any;
+  public house_name_h2: any;
+  public year_h2: any;
   public barChartOptions: ChartOptions = {
     responsive: true,
   };
@@ -38,6 +40,14 @@ export class IncomeStatisticsComponent implements OnInit {
     }
     this.managerService.getHousesManager().subscribe(res => {
       this.house_list = res.houses;
+      this.house_name_h2 = this.house_list[0].name;
+      this.year_h2 = this.currentYear;
+      this.managerService.getIncomeStatistics(this.house_list[0].id, this.currentYear).subscribe(res => {
+        // console.log(res);
+        this.barChartData = [
+          { data: res, label: 'Thu nhập' },
+        ];
+      })
     })
     for (let i = 0; i < 12; i++) {
       // @ts-ignore
@@ -48,9 +58,11 @@ export class IncomeStatisticsComponent implements OnInit {
   sendData(houseSelect: any, yearSelect: any) {
     let house_id = houseSelect.value;
     let year = yearSelect.value;
+    this.house_name_h2 = houseSelect.options[houseSelect.options.selectedIndex].innerHTML;
+    this.year_h2 = year;
     this.managerService.getIncomeStatistics(house_id, year).subscribe(res => {
       // console.log(res);
-      this.barChartData= [
+      this.barChartData = [
         { data: res, label: 'Thu nhập' },
       ];
     })
