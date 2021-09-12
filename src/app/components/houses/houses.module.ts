@@ -5,11 +5,12 @@ import {HouseDetailComponent} from "./house-detail/house-detail.component";
 import {RouterModule, Routes} from "@angular/router";
 import { RentHouseComponent } from './rent-house/rent-house.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HouseListComponent
+    component: HouseListComponent,
   },
   {
     path: ':id/detail',
@@ -20,6 +21,10 @@ const routes: Routes = [
         component: RentHouseComponent,
       }
     ]
+  },
+  {
+    path: 'search',
+    component: SearchComponent
   }
 ]
 
@@ -27,7 +32,8 @@ const routes: Routes = [
   declarations: [
     HouseListComponent,
     HouseDetailComponent,
-    RentHouseComponent
+    RentHouseComponent,
+    SearchComponent
   ],
   imports: [
     [RouterModule.forChild(routes)],
