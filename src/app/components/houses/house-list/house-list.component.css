@@ -1,10 +1,19 @@
-/*.hotel-search-form-area .hotel-search-form{*/
-/*  position: absolute;*/
-/*  z-index: 1;*/
-/*  width: 75%;*/
-/*  !*box-shadow: 0 2px 15px 1px rgb(0 0 0 15%);*!*/
-/*  padding: 20px 20px 0 20px;*/
-/*  border-radius: 15px;*/
-/*  background-color: #ffffff;*/
-/*}*/
-
+.card-img-top {
+  height: 230px;
+  border-radius: 15px;
+}
+.card {
+  border: none;
+}
+.w-100{
+  border-radius: 15px;
+  margin-top: 15px
+}
+.img-list{
+  height: 230px;
+  width: 350px;
+  border-radius: 15px;
+}
+.fa-dollar-sign:before {
+  color: gold;
+}

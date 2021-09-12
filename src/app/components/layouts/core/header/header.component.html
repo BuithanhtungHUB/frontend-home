@@ -1,14 +1,4 @@
 <header class="header-area">
-  <!-- Search Form -->
-  <div class="search-form d-flex align-items-center">
-    <div class="container">
-      <form action="index.html" method="get">
-        <input type="search" name="search-form-input" id="searchFormInput" placeholder="Type your keyword ...">
-        <button type="submit"><i class="icon_search"></i></button>
-      </form>
-    </div>
-  </div>
-
   <!-- Top Header Area Start -->
   <div class="top-header-area">
     <div class="container">
@@ -40,11 +30,11 @@
   <!-- Main Header Start -->
   <div class="main-header-area">
     <div class="classy-nav-container breakpoint-off">
-      <header class="p-3 border-bottom">
+      <header class="border-bottom">
         <div class="container">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-              <img src="/assets/img/core-img/logo%20HFH.png" style="height: 95px; width: 95px" alt="Home From Home">
+              <img src="/assets/img/core-img/logo-header.png" style="height: 95px" alt="Home From Home">
             </a>
             <div class="hotel-search-form-area">
               <div class="container-fluid">
@@ -140,20 +130,11 @@
                 <li><a class="dropdown-item" (click)="logout()">Đăng xuất</a></li>
               </ul>
             </div>
-            <div *ngIf="!user" class="dropdown text-end">
-              <a style="font-size: 18px" href="#" class="d-block link-dark text-decoration-none dropdown-toggle"
-                 id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="assets/img/bg-img/avatar-default.jpg" alt="mdo" width="55" height="55" class="rounded-circle">
-              </a>
-              <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
-                <li><a class="dropdown-item" routerLink="/login">Đăng nhập</a></li>
-                <li><a class="dropdown-item" routerLink="/register">Đăng ký</a></li>
-              </ul>
+            <div *ngIf="!user" class="text-end">
+              <a routerLink="/login" type="button" class=" me-2">Đăng nhập</a>
+              &nbsp;&nbsp;
+              <a routerLink="/register" type="button" class=" me-2">Đăng ký</a>
             </div>
-<!--            <div *ngIf="!user" class="col-md-3 text-end">-->
-<!--              <a routerLink="/login" type="button" class="btn btn-outline-primary me-2">Đăng nhập</a>-->
-<!--              <a routerLink="/register" type="button" class="btn btn-outline-primary me-2">Đăng ký</a>-->
-<!--            </div>-->
           </div>
         </div>
       </header>
