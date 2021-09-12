@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HouseService} from "../../../services/house.service";
 import {ActivatedRoute} from "@angular/router";
+import {DomSanitizer} from "@angular/platform-browser";
 import {FormGroup} from "@angular/forms";
 
 @Component({
@@ -15,7 +16,8 @@ export class HouseDetailComponent implements OnInit {
   user: any;
   orders: any;
   constructor(private houseService: HouseService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              public sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -28,7 +30,6 @@ export class HouseDetailComponent implements OnInit {
       console.log(res);
       this.orders = res;
     })
-
   }
 
   updateStatus(element: any) {
