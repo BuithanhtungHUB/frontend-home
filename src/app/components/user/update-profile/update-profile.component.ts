@@ -60,6 +60,8 @@ export class UpdateProfileComponent implements OnInit {
       address: [userLogin.address],
       phone: [userLogin.phone, [Validators.required, Validators.pattern(/(0)+[0-9]{9}\b/)]],
       email: [userLogin.email],
+      id: [userLogin.id],
+      role: [userLogin.role]
     })
 
     this.imgUrl = this.formUpdateProfile.value.avatar;
