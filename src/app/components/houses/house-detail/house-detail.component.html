@@ -1,5 +1,5 @@
 <!-- Breadcrumb Area Start -->
-<div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(/assets/img/bg-img/16.jpg);">
+<div class="breadcrumb-area bg-img bg-overlay jarallax" >
   <div class="container h-100">
     <div class="row h-100 align-items-center">
       <div class="col-12">
@@ -22,12 +22,12 @@
 <div class="roberto-rooms-area section-padding-100-0">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-lg-10">
+      <div class="col-12 col-lg-12 d-flex justify-content-center">
         <!-- Single Room Area -->
         <div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="100ms">
           <!-- Room Thumbnail -->
           <div class="room-thumbnail">
-            <img width="300px" [src]="houseDetail.images[0].url" alt="">
+            <img width="300px" *ngIf="houseDetail.images !== undefined" [src]="houseDetail.images[0].url" alt="">
           </div>
           <!-- Room Content -->
           <div class="room-content">
@@ -50,6 +50,9 @@
             <pre>{{houseDetail.description}}</pre>
             <a *ngIf="user.role == 'user'" routerLink="rent" class="btn btn-primary">Đặt thuê</a>
           </div>
+          <div>
+            <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(houseDetail.url_map)" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
         </div>
       </div>
       <div *ngIf="user.role == 'manager'" class="container ">
@@ -59,34 +62,41 @@
           <div class=" card-body">
             <h5 class="card-title">Danh sách các lần thuê nhà của bạn:</h5>
             <table class="table table-striped">
-              <thead>
-              <tr >
-                <th scope="col">STT</th>
-                <th scope="col">Tên nhà</th>
-                <th scope="col">Địa chỉ</th>
-                <th scope="col">Ngày nhận</th>
-                <th scope="col">Ngày trả</th>
-                <th scope="col">Tổng giá</th>
-                <th scope="col" colspan="2">Trạng thái đơn</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let order of orders;index as i">
-                <th scope="row">{{i +1}}</th>
-                <td>{{order.house.name}}</td>
-                <td>{{order.house.address}}</td>
-                <td>{{order.start_date}}</td>
-                <td>{{order.end_date}}</td>
-                <td>{{order.total_price}}</td>
-                <td><p style="width: 150px" *ngIf="order.status == 'xác nhận'" class="btn btn-primary">đã xác nhận</p>
-                  <p style="width: 150px" *ngIf="order.status == 'đã thanh toán'" class="btn btn-success">{{order.status}}</p>
-                  <p style="width: 150px" *ngIf="order.status == 'không xác nhận'" class="btn btn-secondary">{{order.status}}</p>
-                  <p style="width: 150px" *ngIf="order.status == 'chờ xác nhận'" class="btn btn-warning">{{order.status}}</p>
-                  <p style="width: 150px" *ngIf="order.status == 'đã hủy'" class="btn btn-danger">{{order.status}}</p>
-                </td>
-              </tr>
-              </tbody>
-            </table>
+
+                <thead>
+                <tr >
+                  <th scope="col">STT</th>
+                  <th scope="col">Tên nhà</th>
+                  <th scope="col">Địa chỉ</th>
+                  <th scope="col">Ngày nhận</th>
+                  <th scope="col">Ngày trả</th>
+                  <th scope="col">Tổng giá</th>
+                  <th scope="col" colspan="2">Trạng thái đơn</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let order of orders;index as i">
+                  <th scope="row">{{i +1}}</th>
+                  <td>{{order.house.name}}</td>
+                  <td>{{order.house.address}}</td>
+                  <td>{{order.start_date}}</td>
+                  <td>{{order.end_date}}</td>
+                  <td>{{order.total_price}}</td>
+                  <td><p style="width: 150px" *ngIf="order.status == 'xác nhận'" class="btn btn-primary">đã xác nhận</p>
+                    <p style="width: 150px" *ngIf="order.status == 'đã thanh toán'" class="btn btn-success">{{order.status}}</p>
+                    <p style="width: 150px" *ngIf="order.status == 'không xác nhận'" class="btn btn-secondary">{{order.status}}</p>
+                    <p style="width: 150px" *ngIf="order.status == 'chờ xác nhận'" class="btn btn-warning">{{order.status}}</p>
+                    <p style="width: 150px" *ngIf="order.status == 'đã hủy'" class="btn btn-danger">{{order.status}}</p>
+                  </td>
+                  <td *ngIf="order.status == 'chờ xác nhận'">
+                    <button class="btn btn-success" (click)="confirmOrder(order.id)" >Xác nhận</button>
+                    &nbsp;&nbsp;
+                    <button class="btn btn-danger"  (click)="refuseOrder(order.id)" >Không xác nhận</button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+
           </div>
         </div>
       </div>
