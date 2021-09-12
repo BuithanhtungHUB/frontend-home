@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-header-title">Kết Quả Tìm Kiếm</h5>
+    </div>
+    <div class=" row card-body">
+      <div *ngFor="let house of houseSearch" class="col-3 card">
+        <img class="card-img" src="{{house.images[0].url}}" class="card-img-top" alt="{{house.name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{house.name}}</h5>
+          <p class="card-text">Địa chỉ: {{house.address}}</p>
+          <p class="card-text">Phòng ngủ: {{house.bedroom}}</p>
+          <p class="card-text">Phòng tắm: {{house.bathroom}}</p>
+          <p class="card-text">Giá: {{house.price}} VNĐ</p>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{house.description}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

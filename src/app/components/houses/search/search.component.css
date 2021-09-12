@@ -1,0 +1,25 @@
+.container {
+  padding: 2% 0%;
+}
+.card{
+  border: none;
+}
+.card-header {
+  border: none;
+}
+.card-header-title {
+  text-align: center;
+}
+.card-title {
+color: #1abc9c;
+}
+.card-img-top{
+  border-radius: 25px;
+  height: 348px;
+}
+.card-body{
+  padding: 0.5rem;
+}
+.card-text {
+ color: #0b0b0b;
+}
