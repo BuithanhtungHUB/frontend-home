@@ -35,26 +35,34 @@
           </div>
         </div>
         <div class="col-6 col-lg-6 infor">
-          <h4>Đánh giá: {{rate}}</h4>
+          <h4>Đánh giá:
+            <rating [(ngModel)]="rateHouse" [max]="max" [readonly]="isReadonly"></rating>
+          </h4>
           <h6><i class="fas fa-user"></i> tổng cộng {{count}} lượt đánh giá</h6>
-            <div class="row reviews" *ngFor="let review of reviews">
-              <div class="col-2 col-lg-2 " >
-                <img [src]="review.avatar" alt="mdo" width="55" height="55" class="rounded-circle avatar">
-              </div>
-              <div class="col-10 col-lg-10">
-                <h6>{{review.user_name}}</h6>
-                <p>rate: {{review.rate}}</p>
-                <p>comment: {{review.comment}}</p>
-              </div>
+          <div class="row reviews" *ngFor="let review of reviews">
+            <div class="col-2 col-lg-2 ">
+              <img [src]="review.avatar" alt="mdo" width="55" height="55" class="rounded-circle avatar">
+            </div>
+            <div class="col-10 col-lg-10">
+              <h6>{{review.user_name}}</h6>
+              <p>rate:
+                <rating [(ngModel)]="review.rate" [max]="max" [readonly]="isReadonly"></rating>
+              </p>
+              <p>comment: {{review.comment}}</p>
+            </div>
           </div>
         </div>
         <div class="col-6 col-lg-6">
-          <form>
+          <form *ngIf="formReview" [formGroup]="formReview" (ngSubmit)="submit()">
             <h5>Viết đánh giá:</h5>
             <label>Đánh giá:</label>
-            <input type="text"> sao
+            <rating formControlName="rate" [(ngModel)]="rateDefault" [max]="max"></rating>
+            <br>
             <label>Bình luận:</label>
-            <input type="text">
+            <br>
+            <textarea formControlName="comment" name="comment" id="comment" cols="70" rows="5"></textarea>
+            <br>
+            <button class="btn btn-success">Gửi đánh giá</button>
           </form>
         </div>
         <div class="col-8 col-lg-8 infor">
@@ -72,10 +80,19 @@
               <div class="card-header">
               </div>
               <div class=" card-body">
-                <h5 class="card-title">Danh sách các lần thuê nhà của bạn:</h5>
+                <h5 class="card-title">Danh sách các lần thuê nhà của bạn:
+                  <span>
+                  <h5 *ngIf="houseDetail.user.id == user.id">Trạng thái của nhà: &nbsp;&nbsp;
+              <select #element (change)="updateStatus(element)">
+                <option value="còn trống" [selected]="houseDetail.status == 'còn trống'">Còn trống</option>
+                <option value="đã thuê" [selected]="houseDetail.status == 'đã thuê'">Đã thuê</option>
+                <option value="đang nâng cấp" [selected]="houseDetail.status == 'đang nâng cấp'">Đang nâng cấp</option>
+              </select>
+            </h5>
+                </span></h5>
                 <table class="table ">
                   <thead>
-                  <tr >
+                  <tr>
                     <th scope="col">STT</th>
                     <th scope="col">Tên nhà</th>
                     <th scope="col">Địa chỉ</th>
@@ -88,7 +105,7 @@
                   </thead>
                   <tbody>
                   <tr *ngFor="let order of orders;index as i">
-                    <th scope="row">{{i +1}}</th>
+                    <th scope="row">{{i + 1}}</th>
                     <td>{{order.house.name}}</td>
                     <td>{{order.house.address}}</td>
                     <td>{{order.start_date}}</td>
@@ -101,11 +118,15 @@
                       <p *ngIf="order.status == 'đã hủy'" class="btn btn-danger">{{order.status}}</p>
                     </td>
                     <td>
-                    <p *ngIf="order.status !== 'chờ xác nhận'">Done</p>
-                    <button *ngIf="order.status == 'chờ xác nhận'" class="btn btn-success" (click)="confirmOrder(order.id)" >Xác nhận</button>
-                    &nbsp;&nbsp;
-                    <button *ngIf="order.status == 'chờ xác nhận'" class="btn btn-danger"  (click)="refuseOrder(order.id)" >Không xác nhận</button>
-                  </td>
+                      <p *ngIf="order.status !== 'chờ xác nhận'">Done</p>
+                      <button *ngIf="order.status == 'chờ xác nhận'" class="btn btn-success"
+                              (click)="confirmOrder(order.id)">Xác nhận
+                      </button>
+                      &nbsp;&nbsp;
+                      <button *ngIf="order.status == 'chờ xác nhận'" class="btn btn-danger"
+                              (click)="refuseOrder(order.id)">Không xác nhận
+                      </button>
+                    </td>
 
                   </tr>
                   </tbody>

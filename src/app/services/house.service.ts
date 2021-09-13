@@ -12,18 +12,19 @@ export class HouseService {
   constructor(
     private http: HttpClient,
     private authService: AuthService
-  ) {}
+  ) {
+  }
 
   getTopFive(): Observable<any> {
     return this.http.get(environment.url_api + 'auto-update');
   }
 
   getHouseList(): Observable<any> {
-    return this.http.get(environment.url_api+ 'get-all');
+    return this.http.get(environment.url_api + 'get-all');
   }
 
   cancelOrder(id: any): Observable<any> {
-    return this.http.post(environment.url_api + 'order/cancel-rent/' +id,null,{headers: this.authService.setHeader()});
+    return this.http.post(environment.url_api + 'order/cancel-rent/' + id, null, {headers: this.authService.setHeader()});
   }
 
   getHouseDetail(id: any): Observable<any> {
@@ -42,17 +43,21 @@ export class HouseService {
     return this.http.get(environment.url_api + 'order/rent-history-house/' + id, {headers: this.authService.setHeader()});
   }
 
-  confirmOrder(data:any, id: any): Observable<any> {
-    return this.http.post(environment.url_api + 'order/rent-confirm/'+id+ '/'+data,null, {headers: this.authService.setHeader()});
+  confirmOrder(data: any, id: any): Observable<any> {
+    return this.http.post(environment.url_api + 'order/rent-confirm/' + id + '/' + data, null, {headers: this.authService.setHeader()});
   }
 
   getAvgRate(id: any): Observable<any> {
-    return this.http.get(environment.url_api + 'get-avg/' +id);
+    return this.http.get(environment.url_api + 'get-avg/' + id);
   }
 
-getReview(id:any): Observable<any> {
-    return this.http.get(environment.url_api + 'get-review/'+id);
-}
+  getReview(id: any): Observable<any> {
+    return this.http.get(environment.url_api + 'get-review/' + id);
+  }
+
+  review(id: any, data: any): Observable<any> {
+    return this.http.post(environment.url_api + 'auth/review/' +id, data,{headers: this.authService.setHeader()} )
+  }
 
   searchHouse(data: any): Observable<any> {
     return this.http.post(environment.url_api + 'search', data);
