@@ -4,8 +4,9 @@ import {HouseListComponent} from "./house-list/house-list.component";
 import {HouseDetailComponent} from "./house-detail/house-detail.component";
 import {RouterModule, Routes} from "@angular/router";
 import { RentHouseComponent } from './rent-house/rent-house.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SearchComponent } from './search/search.component';
+import {RatingModule} from "ngx-bootstrap/rating";
 
 const routes: Routes = [
   {
@@ -38,7 +39,9 @@ const routes: Routes = [
   imports: [
     [RouterModule.forChild(routes)],
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    RatingModule
   ]
 })
 export class HousesModule { }
