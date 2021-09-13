@@ -16,6 +16,9 @@ export class HouseDetailComponent implements OnInit {
   id: any;
   user: any;
   orders: any;
+  count: any;
+  rate: any;
+  reviews: any;
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute,
               public sanitizer: DomSanitizer,
@@ -32,6 +35,14 @@ export class HouseDetailComponent implements OnInit {
       console.log(res);
       this.orders = res;
     })
+    this.houseService.getAvgRate(this.id).subscribe(res =>{
+      this.rate = res;
+    })
+    this.houseService.getReview(this.id).subscribe(res =>{
+      this.reviews = res;
+      this.count = this.reviews.length;
+    })
+
   }
 
   updateStatus(element: any) {

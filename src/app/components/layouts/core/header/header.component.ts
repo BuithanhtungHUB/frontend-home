@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit, DoCheck {
 
   ngOnInit(): void {
     this.user = JSON.parse(<string>this.authService.getUser());
-    // console.log(this.user);
+    console.log(this.user);
     this.formSearch = this.fb.group({
       start_date: [''],
       end_date: [''],
