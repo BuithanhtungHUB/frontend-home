@@ -18,7 +18,7 @@ export class ListOrderComponent implements OnInit {
 
   getListOrder() {
     this.managerService.getListOrderManager().subscribe(res => {
-      this.orders = res.orders_manager;
+      this.orders = res;
     })
   }
 

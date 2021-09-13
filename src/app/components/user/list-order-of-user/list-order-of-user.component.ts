@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../services/user.service";
 import {HouseService} from "../../../services/house.service";
 import {ActivatedRoute} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-list-order-of-user',
@@ -14,7 +15,8 @@ export class ListOrderOfUserComponent implements OnInit {
   id: any;
   constructor(private userService: UserService,
               private houseService: HouseService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private toastr:ToastrService) {
   }
 
   ngOnInit(): void {
@@ -34,11 +36,11 @@ export class ListOrderOfUserComponent implements OnInit {
     if (confirm('Bạn chắc chắn muốn hủy đơn này?')) {
       this.houseService.cancelOrder(id).subscribe(res => {
         this.getOrders();
-        alert('Hủy đơn thành công.');
+        this.toastr.success('Hủy đơn thành công.');
         location.reload();
       },erors => {
         // console.log(erors.error.error)
-        alert(erors.error.error);
+        this.toastr.warning(erors.error.error);
       })
     }
   }
