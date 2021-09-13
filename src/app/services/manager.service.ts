@@ -30,4 +30,7 @@ export class ManagerService {
   getHousesManager() :Observable<any> {
     return this.http.get(environment.url_api + 'user/house-list', {headers: this.authService.setHeader()});
   }
+  getIncomeStatistics(house_id: any, year: any): Observable<any> {
+    return this.http.get(environment.url_api + 'order/income-statistics/' + house_id + '/' + year, {headers: this.authService.setHeader()})
+  }
 }

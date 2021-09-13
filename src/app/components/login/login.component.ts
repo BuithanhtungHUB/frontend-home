@@ -27,9 +27,6 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  showSuccess(){
-    this.toastr.success('Đăng nhập thành công');
-  }
 
   submit() {
     let data = this.formLogin?.value;
@@ -39,7 +36,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['']).then(respone => {
         this.messageSuccess = 'Đăng nhập thành công';
         location.reload();
-        this.showSuccess();
+        this.toastr.success('Đăng nhập thành công');
       })
     }, errors => {
       this.messageUser = JSON.stringify(errors.error.user_name);

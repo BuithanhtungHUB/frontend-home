@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../services/user.service";
 import {AuthService} from "../../../services/auth.service";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-change-password',
@@ -16,7 +17,8 @@ export class ChangePasswordComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private userService: UserService,
               private authService: AuthService,
-              private router: Router
+              private router: Router,
+              private toastr: ToastrService
               ) { }
 
   ngOnInit(): void {
@@ -36,7 +38,8 @@ export class ChangePasswordComponent implements OnInit {
           localStorage.clear();
           this.router.navigate(['']).then(r => {
             location.reload();
-            console.log('logout success')
+            this.toastr.success('mật khẩu của bạn đã được thay đổi')
+            // console.log('logout success')
           }).catch(error => {
             console.log('logout error')
           })

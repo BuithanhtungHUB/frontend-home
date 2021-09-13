@@ -5,6 +5,7 @@ import {finalize} from "rxjs/operators";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {ManagerService} from "../../../services/manager.service";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-create-house',
@@ -19,7 +20,8 @@ export class CreateHouseComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private storage: AngularFireStorage,
               private managerService: ManagerService,
-              private router: Router) { }
+              private router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.formCreateHouse = this.fb.group({
@@ -55,11 +57,11 @@ export class CreateHouseComponent implements OnInit {
     // console.log(data);
     this.managerService.createHouse(data).subscribe(res => {
       this.router.navigate(['manager/list-house']).then(r => {
-        alert('Thêm thành công')
+        this.toastr.success('Thêm thành công')
       })
     },
       error => {
-      alert('Điền thiếu trường')
+      this.toastr.warning('Điền thiếu trường')
       })
   }
 
@@ -91,7 +93,7 @@ export class CreateHouseComponent implements OnInit {
     let rejectedFiles: File[] = [];
     rejectedFiles.push(...event.rejectedFiles);
     if (rejectedFiles.length > 0) {
-      alert('Có file tải lên không phải định dạng ảnh!')
+      this.toastr.warning('Có file tải lên không phải định dạng ảnh!')
     }
     // console.log(rejectedFiles);
     // console.log(this.files);
@@ -131,7 +133,7 @@ export class CreateHouseComponent implements OnInit {
       }
     }
     else {
-      alert('Chỉ được phép tải lên tối đa 5 ảnh. Mời chọn lại!');
+      this.toastr.warning('Chỉ được phép tải lên tối đa 5 ảnh. Mời chọn lại!');
       this.files = [];
       this.imgUrls = [];
     }

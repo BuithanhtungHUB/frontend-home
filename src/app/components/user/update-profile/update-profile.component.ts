@@ -6,6 +6,7 @@ import {AuthService} from "../../../services/auth.service";
 import {Observable} from "rxjs";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs/operators";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-update-profile',
@@ -48,7 +49,8 @@ export class UpdateProfileComponent implements OnInit {
               private userService: UserService,
               private router: Router,
               private authService: AuthService,
-              private storage: AngularFireStorage) { }
+              private storage: AngularFireStorage,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     let userLogin = JSON.parse(<string>this.authService.getUser());
@@ -60,6 +62,8 @@ export class UpdateProfileComponent implements OnInit {
       address: [userLogin.address],
       phone: [userLogin.phone, [Validators.required, Validators.pattern(/(0)+[0-9]{9}\b/)]],
       email: [userLogin.email],
+      id: [userLogin.id],
+      role: [userLogin.role]
     })
 
     this.imgUrl = this.formUpdateProfile.value.avatar;
@@ -73,7 +77,7 @@ export class UpdateProfileComponent implements OnInit {
       localStorage.setItem('userLogin', JSON.stringify(data));
       this.userService.updateProfile(data).subscribe(res => {
         this.router.navigate(['']).then();
-        alert('Cập nhật thành công');
+        this.toastr.success('Cập nhật thành công');
       });
     }
   }

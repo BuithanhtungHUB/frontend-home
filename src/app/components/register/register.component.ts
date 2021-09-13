@@ -37,16 +37,13 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  showSuccess(){
-    this.toastr.success('Đăng Ký thành công');
-  }
 
   submit() {
     let data = this.formRegister?.value;
     this.authService.register(data).subscribe(respone => {
       this.router.navigate(['/login']).then(respone => {
         this.messageSuccess = 'Đăng ký thành công';
-        this.showSuccess();
+        this.toastr.success('Đăng Ký thành công');
         // console.log(this.messageSuccess);
       })
     }, errors => {
