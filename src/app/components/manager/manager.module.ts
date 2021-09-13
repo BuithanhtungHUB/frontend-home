@@ -10,6 +10,8 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../../../environments/environment";
 import {NgxDropzoneModule} from "ngx-dropzone";
+import { IncomeStatisticsComponent } from './income-statistics/income-statistics.component';
+import {ChartsModule} from "ng2-charts";
 
 const routes : Routes = [
   {
@@ -23,6 +25,10 @@ const routes : Routes = [
   {
     path: 'order-list',
     component: ListOrderComponent
+  },
+  {
+    path: 'income-statistics',
+    component: IncomeStatisticsComponent
   }
 ]
 
@@ -30,16 +36,18 @@ const routes : Routes = [
   declarations: [
     ManagerListHouseComponent,
     CreateHouseComponent,
-    ListOrderComponent
+    ListOrderComponent,
+    IncomeStatisticsComponent
   ],
-    imports: [
-        [RouterModule.forChild(routes)],
-        CommonModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        AngularFireStorageModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
-        NgxDropzoneModule
-    ]
+  imports: [
+    [RouterModule.forChild(routes)],
+    CommonModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+    NgxDropzoneModule,
+    ChartsModule
+  ]
 })
 export class ManagerModule { }
