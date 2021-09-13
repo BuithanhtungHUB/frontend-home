@@ -45,6 +45,15 @@ export class HouseService {
   confirmOrder(data:any, id: any): Observable<any> {
     return this.http.post(environment.url_api + 'order/rent-confirm/'+id+ '/'+data,null, {headers: this.authService.setHeader()});
   }
+
+  getAvgRate(id: any): Observable<any> {
+    return this.http.get(environment.url_api + 'get-avg/' +id);
+  }
+
+getReview(id:any): Observable<any> {
+    return this.http.get(environment.url_api + 'get-review/'+id);
+}
+
   searchHouse(data: any): Observable<any> {
     return this.http.post(environment.url_api + 'search', data);
   }
