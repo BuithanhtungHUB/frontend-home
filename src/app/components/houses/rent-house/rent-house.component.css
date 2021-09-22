@@ -1,3 +1,8 @@
 .ho.hotel-search-form-area .hotel-search-form {
   padding: 40px;
 }
+.btn:not(:disabled):not(.disabled) {
+  cursor: pointer;
+  color: white;
+  background-color: #1cc3b2;
+}

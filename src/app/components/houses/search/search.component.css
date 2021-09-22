@@ -1,25 +1,34 @@
 .container {
+  max-width: 1800px;
+
   padding: 2% 0%;
 }
-.card{
+
+.card {
   border: none;
 }
+
 .card-header {
   border: none;
 }
+
 .card-header-title {
   text-align: center;
 }
+
 .card-title {
-color: #1abc9c;
+  color: #1abc9c;
 }
-.card-img-top{
+
+.card-img-top {
   border-radius: 25px;
   height: 348px;
 }
-.card-body{
+
+.card-body {
   padding: 0.5rem;
 }
+
 .card-text {
- color: #0b0b0b;
+  color: #0b0b0b;
 }

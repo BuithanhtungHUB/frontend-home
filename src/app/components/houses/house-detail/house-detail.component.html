@@ -15,12 +15,15 @@
         <div class="col-6 col-lg-6">
           <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img [src]="houseDetail.images[0].url" class="d-block w-100" alt="...">
-              </div>
-              <div *ngFor="let image of houseDetail.images" class="carousel-item">
+<!--              <div class="carousel-item active">-->
+<!--                <img [src]="houseDetail.images[0].url" class="d-block w-100" alt="...">-->
+<!--              </div>-->
+              <div *ngFor="let image of houseDetail.images, index as i" class="carousel-item" [ngClass]="{'active': i == 0}">
                 <img [src]="image.url" class="d-block w-100" alt="...">
               </div>
+<!--              <div *ngFor="let image of houseDetail.images" class="carousel-item">-->
+<!--                <img [src]="image.url" class="d-block w-100" alt="...">-->
+<!--              </div>-->
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
                     data-bs-slide="prev">
@@ -45,10 +48,10 @@
             </div>
             <div class="col-10 col-lg-10">
               <h6>{{review.user_name}}</h6>
-              <p>rate:
+              <p>đánh giá:
                 <rating [(ngModel)]="review.rate" [max]="max" [readonly]="isReadonly"></rating>
               </p>
-              <p>comment: {{review.comment}}</p>
+              <p>bình luận: {{review.comment}}</p>
             </div>
           </div>
         </div>

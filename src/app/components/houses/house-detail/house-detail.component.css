@@ -26,3 +26,6 @@ iframe{
 .rent {
   margin-top: 10%;
 }
+.container {
+  max-width: 1800px
+}

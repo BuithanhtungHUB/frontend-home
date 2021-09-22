@@ -27,3 +27,6 @@ padding: 0px;
 button{
   margin-top: 15px;
 }
+.container {
+  max-width: 1800px
+}

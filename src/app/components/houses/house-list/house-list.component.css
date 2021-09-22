@@ -17,3 +17,6 @@
 .fa-dollar-sign:before {
   color: gold;
 }
+.container {
+  max-width: 1800px
+}
